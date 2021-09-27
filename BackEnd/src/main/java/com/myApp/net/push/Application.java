@@ -13,7 +13,6 @@ public class Application extends ResourceConfig {
         // 注册包名，service包
         packages(AccountService.class.getPackage().getName());
         // 注册json和日志
-        register(JacksonJsonProvider.class);
         register(GsonProvider.class);
         register(Logger.class);
 

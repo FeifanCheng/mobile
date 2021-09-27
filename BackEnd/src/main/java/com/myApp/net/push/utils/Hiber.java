@@ -45,14 +45,6 @@ public class Hiber {
         return sessionFactory;
     }
 
-    /**
-     * 从SessionFactory中得到一个Session会话
-     *
-     * @return Session
-     */
-    public static Session session() {
-        return sessionFactory.getCurrentSession();
-    }
 
     /**
      * 关闭sessionFactory
@@ -62,4 +54,36 @@ public class Hiber {
             sessionFactory.close();
         }
     }
+
+    /**
+     * 带返回值的Query接口
+     */
+    public interface Query<T> {
+        T query(Session session);
+    }
+
+    /**
+     * 请求数据库方法
+     */
+    public static <T> T query(Query<T> query) {
+        Session session = sessionFactory().openSession();
+
+        T t = null;
+        Transaction transaction = session.beginTransaction();
+        try {
+            t = query.query(session);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                transaction.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            session.close();
+        }
+        return t;
+    }
+
 }

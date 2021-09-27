@@ -1,5 +1,7 @@
 package com.myApp.net.push.db.entity;
 
+import com.myApp.net.push.db.entity.Group;
+import com.myApp.net.push.db.entity.UserFollow;
 import org.hibernate.annotations.*;
 
 import javax.persistence.CascadeType;
@@ -26,6 +28,7 @@ public class User {
     // The type of primary key generation and storage is UUID
     @GeneratedValue(generator = "uuid")
     // Define the generator of uuid as uuid2, uuid2 is the regular UUID toString
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     // No change is allowed, null is not allowed
     @Column(updatable = false, nullable = false)
     private String id;

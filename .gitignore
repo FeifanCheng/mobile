@@ -22,9 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-BackEnd/.DS_Store/
+BackEnd/.DS_Store
 BackEnd/.idea/
-BackEnd/.build/
+BackEnd/build/
 myApp/.build/
 myApp/.DS_Store/
 myApp/.idea/

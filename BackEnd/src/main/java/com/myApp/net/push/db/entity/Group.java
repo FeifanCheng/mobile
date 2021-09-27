@@ -1,4 +1,4 @@
-package mobile;
+package com.myApp.net.push.db.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;

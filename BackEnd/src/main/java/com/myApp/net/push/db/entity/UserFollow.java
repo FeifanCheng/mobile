@@ -1,4 +1,4 @@
-package mobile;
+package com.myApp.net.push.db.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * ÓÃ»§¹ØÏµ
+ * ï¿½Ã»ï¿½ï¿½ï¿½Ïµ
  * User relations
  *
  * @author Group T01/01-5
@@ -46,7 +46,7 @@ public class UserFollow {
     @Column(nullable = false, updatable = false, insertable = false)
     private String targetId;
 
-    // ±ðÃû(¿ÉÓÐ¿ÉÎÞ)
+    // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½)
     @Column
     private String alias;
 

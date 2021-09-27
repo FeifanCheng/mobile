@@ -1,4 +1,4 @@
-package mobile;
+package com.myApp.net.push.db.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * ÉêÇë¼ÇÂ¼±í
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
  * Application Record Form
  *
  * @author  Group T01/01-5
@@ -47,8 +47,8 @@ public class Apply {
 
 
     // The target Id is not strongly associated, and the primary and foreign key relationship is not established
-    // type->TYPE_ADD_USER£ºUser.id
-    // type->TYPE_ADD_GROUP£ºGroup.id
+    // type->TYPE_ADD_USERï¿½ï¿½User.id
+    // type->TYPE_ADD_GROUPï¿½ï¿½Group.id
     @Column(nullable = false)
     private String targetId;
 

@@ -1,4 +1,4 @@
-package mobile;
+package com.myApp.net.push.db.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * ÏûÏ¢ÍÆËÍÀúÊ·¼ÇÂ¼±í
+ * ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê·ï¿½ï¿½Â¼ï¿½ï¿½
  * Message push history table
  *
  * @author Group T01/01-5
@@ -42,7 +42,7 @@ public class PushHistory {
     // One receiver can receive many push messages
     // FetchType.EAGER: Load user information between when loading a push message
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    // Ä¬ÈÏÊÇ£ºreceiver_id
+    // Ä¬ï¿½ï¿½ï¿½Ç£ï¿½receiver_id
     @JoinColumn(name = "receiverId")
     private User receiver;
     @Column(nullable = false, updatable = false, insertable = false)
@@ -60,7 +60,7 @@ public class PushHistory {
 
 
     // The device push ID of the receiver in the current state
-    // User.pushId ¿ÉÎªnull
+    // User.pushId ï¿½ï¿½Îªnull
     @Column
     private String receiverPushId;
 

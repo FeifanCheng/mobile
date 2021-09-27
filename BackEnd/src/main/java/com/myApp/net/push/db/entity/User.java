@@ -1,4 +1,4 @@
-package mobile;
+package com.myApp.net.push.db.entity;
 
 import org.hibernate.annotations.*;
 
@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * сц╩╖йЩ╬щ©Б
+ * О©╫ц╩О©╫О©╫О©╫О©╫щ©О©╫
  * User database
  *
  * @author Group T01/01-5
@@ -56,7 +56,7 @@ public class User {
     @Column(unique = true)
     private String token;
 
-    // ©исп©инч
+    // О©╫О©╫О©╫п©О©╫О©╫О©╫
     // Device ID used for push
     @Column
     private String pushId;

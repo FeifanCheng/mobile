@@ -1,31 +1,27 @@
 package com.myApp.net.push.service;
 
 import com.myApp.net.push.db.entity.User;
+import com.myApp.net.push.model.account.RegisterModel;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-// localhost:8080/api/account
+// http://localhost:8080/api/account
 @Path("/account")
 public class AccountService {
 
-    @GET
-    @Path("/test")
-    public String get() {
-        return "success";
-    }
-
-    //POST 127.0.0.1/api/account/login
+    /**
+     *
+     * @param registerModel 请求参数：pwd，name，accountNo
+     * @return
+     */
     @POST
-    @Path("/login")
+    @Path("/register")
     // 指定请求与返回的相应体为JSON
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User post() {
-        User user = new User();
-        user.setName("美女");
-        user.setSex(2);
-        return user;
+    public User register(RegisterModel registerModel) {
+        return new User();
     }
 
 }

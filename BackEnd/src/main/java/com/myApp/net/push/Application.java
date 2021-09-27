@@ -1,5 +1,7 @@
 package com.myApp.net.push;
 
+import com.google.gson.Gson;
+import com.myApp.net.push.provider.GsonProvider;
 import com.myApp.net.push.service.AccountService;
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -12,7 +14,9 @@ public class Application extends ResourceConfig {
         packages(AccountService.class.getPackage().getName());
         // 注册json和日志
         register(JacksonJsonProvider.class);
+        register(GsonProvider.class);
         register(Logger.class);
+
     }
 
 }

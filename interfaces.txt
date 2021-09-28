@@ -1,0 +1,94 @@
+接口 (需设置Content-Type为application/json)
+
+1. POST  http://localhost:8080/api/account/register  
+参数：pwd，name，accountNo, pushId（可无）
+返回：{
+    "code": 1,
+    "message": "Success",
+    "time": "2021-09-28T18:49:42.746",
+    "response_result": {
+        "userIdentity": {
+            "id": "7c113d70-639b-477d-a9c0-726847e6c0ce",
+            "name": "xiaohong",
+            "portrait": null,
+            "phone": "1598888",
+            "description": null,
+            "sex": 0,
+            "updateAt": "2021-09-28T18:49:42.735",
+            "follows": 0,
+            "followings": 0,
+            "isFollow": false
+        },
+        "token": "MzI0M2VjMWYtNzg3Zi00MGRlLTk4NWYtYzEwMzBhODljYzkw",
+        "isBindService": false
+    }
+}
+
+2. POST  http://localhost:8080/api/account/login
+参数：accountNo, pwd, pushId（可无）
+返回：{
+    "code": 1,
+    "message": "Success",
+    "time": "2021-09-28T18:55:39.837",
+    "response_result": {
+        "userIdentity": {
+            "id": "7c113d70-639b-477d-a9c0-726847e6c0ce",
+            "name": "xiaohong",
+            "portrait": null,
+            "phone": "1598888",
+            "description": null,
+            "sex": 0,
+            "updateAt": "2021-09-28T18:49:42.735",
+            "follows": 0,
+            "followings": 0,
+            "isFollow": false
+        },
+        "token": "MzI0M2VjMWYtNzg3Zi00MGRlLTk4NWYtYzEwMzBhODljYzkw",
+        "isBindService": false
+    }
+}
+
+3. POST  http://localhost:8080/api/account/bind/{pushId}
+参数：无（header需设置token）
+返回：{
+    "code": 1,
+    "message": "Success",
+    "time": "2021-09-28T18:58:16.200",
+    "response_result": {
+        "userIdentity": {
+            "id": "1e026302-05bb-4569-9d83-53864254c08a",
+            "name": "xiaoming",
+            "portrait": null,
+            "phone": "111111",
+            "description": null,
+            "sex": 0,
+            "updateAt": "2021-09-28T18:58:16.188",
+            "follows": 0,
+            "followings": 0,
+            "isFollow": false
+        },
+        "token": "NDZkZmI5YmEtZmI1OC00NDczLTg4MTMtNTNmYTNiM2EzN2U4",
+        "isBindService": true
+    }
+}
+
+4. PUT  http://localhost:8080/api/user/updateInfo
+参数：header需设置token; (以下参数至少有一个) name, portrait, phone, description, sex(数字), password 
+返回：{
+    "code": 1,
+    "message": "Success",
+    "time": "2021-09-28T19:01:21.360",
+    "response_result": {
+        "id": "1e026302-05bb-4569-9d83-53864254c08a",
+        "name": "xiaoxiao",
+        "portrait": null,
+        "phone": "111111",
+        "description": null,
+        "sex": 0,
+        "updateAt": "2021-09-28T19:01:21.313",
+        "follows": 0,
+        "followings": 0,
+        "isFollow": true
+    }
+}
+

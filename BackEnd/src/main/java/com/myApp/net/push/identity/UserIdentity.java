@@ -1,6 +1,7 @@
-package com.myApp.net.push.db.identity;
+package com.myApp.net.push.identity;
 
 import com.google.gson.annotations.Expose;
+import com.myApp.net.push.db.entity.User;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,21 @@ public class UserIdentity {
     private int followings; // 粉丝数
     @Expose
     private Boolean isFollow; // 我与当前用户是否关注
+
+    public UserIdentity(User user) {
+        this.id = user.getId();
+        this.description = user.getDescription();
+        this.isFollow = true;
+        this.name = user.getName();
+        this.phone = user.getPhone();
+        this.sex = user.getSex();
+        this.portrait = user.getPortrait();
+        this.updateAt = user.getUpdateAt();
+        // TODO：需要改
+        this.followings = 0;
+        this.follows = 0;
+
+    }
 
     public String getId() {
         return id;

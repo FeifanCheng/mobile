@@ -1,10 +1,14 @@
-package com.myApp.net.push.utils;
+package com.myApp.net.push.model.response;
 
 import com.google.gson.annotations.Expose;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * 所有response的定义类
+ * @param <T>
+ */
 public class Response<T> implements Serializable {
     public static final int SUCCESS = 1;
     public static final int ERROR_UNDEFINED = 0;
@@ -27,6 +31,7 @@ public class Response<T> implements Serializable {
     public static final int ERROR_ACCOUNT_LOGIN_FAIL = 2001;
     public static final int ERROR_ACCOUNT_REGISTER_FAIL = 2002;
     public static final int ERROR_ACCOUNT_NO_PERMISSION = 2010;
+    public static final int ERROR_ACCOUNT_BIND_SERVICE_FAIL = 2011;
 
     @Expose
     private int code;
@@ -144,5 +149,9 @@ public class Response<T> implements Serializable {
 
     public static <M> Response<M> buildCreateError(int type) {
         return new Response<M>(type, "Create failed.");
+    }
+
+    public static <M> Response<M> buildBindServiceError() {
+        return new Response<M>(ERROR_ACCOUNT_BIND_SERVICE_FAIL, "Bind service failed.");
     }
 }

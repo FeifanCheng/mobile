@@ -1,11 +1,9 @@
-package com.myApp.net.push.model.response;
+package com.myApp.net.push.response;
 
 import com.google.gson.annotations.Expose;
 import com.myApp.net.push.db.entity.User;
 import com.myApp.net.push.identity.UserIdentity;
 import com.mysql.cj.util.StringUtils;
-
-import java.time.LocalDateTime;
 
 /**
  * 和账户有关的返回

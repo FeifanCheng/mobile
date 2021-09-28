@@ -1,6 +1,7 @@
 package com.myApp.net.push.db.mapper;
 
 import com.myApp.net.push.db.entity.User;
+import com.myApp.net.push.model.user.UpdateInfoModel;
 import com.myApp.net.push.utils.Hiber;
 import com.myApp.net.push.utils.TextUtil;
 import com.mysql.cj.util.StringUtils;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * User数据库操作
+ * User表操作
  */
 public class UserMapper {
 
@@ -143,7 +144,6 @@ public class UserMapper {
             }
         }
 
-
         // 绑定当前账户
         if (!StringUtils.isNullOrEmpty(user.getPushId())) {
             if (!user.getPushId().equals(pushId)) {
@@ -156,5 +156,39 @@ public class UserMapper {
             return user;
         });
     }
+
+    /**
+     * 修改用户信息
+     *
+     * @param updateInfoModel
+     * @param user
+     * @return
+     */
+    public static User updateInfo(UpdateInfoModel updateInfoModel, User user) {
+        if (!StringUtils.isNullOrEmpty(updateInfoModel.getDescription())) {
+            user.setDescription(updateInfoModel.getDescription());
+        }
+        if (!StringUtils.isNullOrEmpty(updateInfoModel.getPhone())) {
+            user.setPhone(updateInfoModel.getPhone());
+        }
+        if (!StringUtils.isNullOrEmpty(updateInfoModel.getPassword())) {
+            user.setPassword(updateInfoModel.getPassword());
+        }
+        if (!StringUtils.isNullOrEmpty(updateInfoModel.getPortrait())) {
+            user.setPortrait(updateInfoModel.getPortrait());
+        }
+        if (!StringUtils.isNullOrEmpty(updateInfoModel.getName())) {
+            user.setName(updateInfoModel.getName());
+        }
+        if (updateInfoModel.getSex() != 0) {
+            user.setSex(updateInfoModel.getSex());
+        }
+
+        return Hiber.query(session -> {
+            session.saveOrUpdate(user);
+            return user;
+        });
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.myApp.net.push.model.response;
+package com.myApp.net.push.response;
 
 import com.google.gson.annotations.Expose;
 
@@ -32,6 +32,8 @@ public class Response<T> implements Serializable {
     public static final int ERROR_ACCOUNT_REGISTER_FAIL = 2002;
     public static final int ERROR_ACCOUNT_NO_PERMISSION = 2010;
     public static final int ERROR_ACCOUNT_BIND_SERVICE_FAIL = 2011;
+
+    public static final int ERROR_USER_UPDATE_INFO_FAIL = 6000;
 
     @Expose
     private int code;
@@ -153,5 +155,9 @@ public class Response<T> implements Serializable {
 
     public static <M> Response<M> buildBindServiceError() {
         return new Response<M>(ERROR_ACCOUNT_BIND_SERVICE_FAIL, "Bind service failed.");
+    }
+
+    public static <M> Response<M> buildUserUpdateError() {
+        return new Response<M>(ERROR_USER_UPDATE_INFO_FAIL, "Update user info failed.");
     }
 }

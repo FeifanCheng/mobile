@@ -30,10 +30,15 @@ public class UserIdentity {
     @Expose
     private Boolean isFollow; // 我与当前用户是否关注
 
-    public UserIdentity(User user) {
+    public UserIdentity(User user){
+        this(user, false);
+    }
+
+
+    public UserIdentity(User user, boolean isFollow) {
         this.id = user.getId();
         this.description = user.getDescription();
-        this.isFollow = true;
+        this.isFollow = isFollow;
         this.name = user.getName();
         this.phone = user.getPhone();
         this.sex = user.getSex();

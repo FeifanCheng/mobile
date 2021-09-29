@@ -1,3 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="data_account_login_invalid_parameter">Empty account or password!</string>
+    <string name="data_account_login_error_validate">Invalid account or password!</string>
+    <string name="data_account_register_invalid_parameter_mobile">Invalid account!</string>
+    <string name="data_account_register_invalid_parameter_password">Password can\'t be less than 6!</string>
+    <string name="data_account_register_invalid_parameter_name">Empty name!</string>
+    <string name="data_account_update_invalid_parameter">Empty portrait or description!</string>
+    <string name="data_network_error">Network failure!</string>
+    <string name="data_upload_error">Upload failure!</string>
+
+
+    <string name="data_rsp_error_unknown">Unknown error…</string>
+    <string name="data_rsp_error_service">Server error…</string>
+    <string name="data_rsp_error_not_found_user">No matched user!</string>
+    <string name="data_rsp_error_not_found_group">No matched group!</string>
+    <string name="data_rsp_error_not_found_group_member">No matched group member!</string>
+    <string name="data_rsp_error_create_user">Add user failed!</string>
+    <string name="data_rsp_error_create_group">Add group failed!</string>
+    <string name="data_rsp_error_create_message">Add message failed!</string>
+    <string name="data_rsp_error_parameters">Sorry, your parameters are not correct…</string>
+    <string name="data_rsp_error_parameters_exist_account">Already have this account!</string>
+    <string name="data_rsp_error_parameters_exist_name">Already have this name!</string>
+    <string name="data_rsp_error_account_token">Please login again!</string>
+    <string name="data_rsp_error_account_login">Login failed…</string>
+    <string name="data_rsp_error_account_register">Sorry, register failed…</string>
+    <string name="data_rsp_error_account_no_permission">You don\'t have permission to operate!</string>
 
 </resources>

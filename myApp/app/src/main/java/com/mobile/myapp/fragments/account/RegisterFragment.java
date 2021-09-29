@@ -94,6 +94,8 @@ public class RegisterFragment extends Fragment implements RegisterPresent.View {
 
     @Override
     public void registerSuccess() {
+        Toast.makeText(getContext(), "Register succeed!", Toast.LENGTH_SHORT).show();
+
         // 跳转到main并结束当前activity
         MainActivity.show(Objects.requireNonNull(getContext()));
         Objects.requireNonNull(getActivity()).finish();

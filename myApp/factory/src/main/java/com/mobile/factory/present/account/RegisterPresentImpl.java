@@ -1,8 +1,14 @@
 package com.mobile.factory.present.account;
 
+import com.mobile.factory.R;
+import com.mobile.util.data.DataSource;
 import com.mobile.util.helper.account.AccountHelper;
 import com.mobile.util.model.api.RegisterModel;
+import com.mobile.util.model.db.User;
 import com.raizlabs.android.dbflow.StringUtils;
+
+import net.qiujuer.genius.kit.handler.Run;
+import net.qiujuer.genius.kit.handler.runable.Action;
 
 /**
  * 没有写basePresenter基类，直接用就行
@@ -33,16 +39,46 @@ public class RegisterPresentImpl implements RegisterPresent.Presenter {
     public void requestRegister(String phone, String name, String password) {
         start();
 
+        // 拿到当前view
+        RegisterPresent.View cur_view = getMy_view();
+
         // 检查参数
         if (!checkInput(phone)) {
-
+            cur_view.registerFail(R.string.data_account_register_invalid_parameter_mobile);
         } else if (!checkInput(password) || password.length() < 6) {
-
+            cur_view.registerFail(R.string.data_account_register_invalid_parameter_password);
         } else if (!checkInput(name)) {
-
+            cur_view.registerFail(R.string.data_account_register_invalid_parameter_name);
         } else {
             // 发起网络请求
-            AccountHelper.register(new RegisterModel(phone, password, name));
+            AccountHelper.register(new RegisterModel(phone, password, name), new DataSource.Callback<User>() {
+                @Override
+                public void onFail(int error) {
+                    // 注册失败，返回一个错误码
+                    if (cur_view != null) {
+                        Run.onUiAsync(new Action() {
+                            @Override
+                            public void call() {
+                                cur_view.registerFail(error);
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onSuccess(User user) {
+                    // 注册成功，回送一个用户
+                    // 调用注册成功即可
+                    if (cur_view != null) {
+                        Run.onUiAsync(new Action() {
+                            @Override
+                            public void call() {
+                                cur_view.registerSuccess();
+                            }
+                        });
+                    }
+                }
+            });
 
         }
     }

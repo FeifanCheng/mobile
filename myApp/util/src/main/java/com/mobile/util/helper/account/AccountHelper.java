@@ -1,5 +1,7 @@
 package com.mobile.util.helper.account;
 
+import com.mobile.util.R;
+import com.mobile.util.data.DataSource;
 import com.mobile.util.model.api.RegisterModel;
 import com.mobile.util.model.db.User;
 
@@ -8,23 +10,21 @@ import com.mobile.util.model.db.User;
  */
 public class AccountHelper {
     /**
-     * callback接口，客户端成功接收到数据后做回调
+     * 封装注册请求
+     * @param registerModel 一个请求model
+     * @param callback 处理请求结果的回调
      */
-    interface Callback {
-        /**
-         * 成功时传进来一个user
-         *
-         * @param user
-         */
-        void onSuccess(User user);
-    }
-
-    /**
-     * 封装注册请求，传进来一个请求model
-     *
-     * @param registerModel
-     */
-    public static void register(RegisterModel registerModel, Callback callback) {
-
+    public static void register(RegisterModel registerModel, DataSource.Callback<User> callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    callback.onFail(R.string.data_network_error);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

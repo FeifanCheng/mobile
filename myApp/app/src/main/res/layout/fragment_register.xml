@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:background="@drawable/bg_login"
+    android:background="@drawable/bg_login"
     tools:context="com.mobile.myapp.fragments.account.RegisterFragment">
 
     <androidx.appcompat.widget.Toolbar

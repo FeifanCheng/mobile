@@ -4,16 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:background="@drawable/bg_src_tianjin"
+    tools:background="@drawable/bg_login"
     tools:context="com.mobile.myapp.fragments.account.RegisterFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_gradient_black"
         android:paddingBottom="@dimen/len_28"
         android:paddingTop="@dimen/len_40"
-        app:title="@string/label_register_welcome"
+        app:title="@string/label_register"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <LinearLayout
@@ -34,7 +33,7 @@
             android:padding="@dimen/len_4">
 
 
-            <ImageView
+            <net.qiujuer.genius.ui.widget.ImageView
                 android:layout_width="@dimen/len_20"
                 android:layout_height="@dimen/len_20"
                 android:layout_gravity="center_vertical"
@@ -42,9 +41,9 @@
                 android:layout_marginRight="@dimen/len_8"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_phone"
-                app:tint="@color/colorAccent" />
+                app:tint="@color/black_alpha_48" />
 
-            <EditText
+            <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/edit_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
                 android:paddingTop="@dimen/len_8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textSecond"
+                android:textColorHint="@color/black_alpha_64"
                 android:textCursorDrawable="@drawable/ic_cursor"
                 android:textSize="@dimen/font_14" />
 
@@ -82,17 +81,17 @@
             android:padding="@dimen/len_4">
 
 
-            <ImageView
+            <net.qiujuer.genius.ui.widget.ImageView
                 android:layout_width="@dimen/len_20"
                 android:layout_height="@dimen/len_20"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/len_8"
                 android:layout_marginRight="@dimen/len_8"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_key"
-                app:tint="@color/colorAccent" />
+                android:src="@drawable/ic_pwd"
+                app:tint="@color/black_alpha_48" />
 
-            <EditText
+            <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/edit_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -106,7 +105,7 @@
                 android:paddingTop="@dimen/len_8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textSecond"
+                android:textColorHint="@color/black_alpha_64"
                 android:textCursorDrawable="@drawable/ic_cursor"
                 android:textSize="@dimen/font_14" />
 
@@ -129,17 +128,17 @@
             android:padding="@dimen/len_4">
 
 
-            <ImageView
+            <net.qiujuer.genius.ui.widget.ImageView
                 android:layout_width="@dimen/len_20"
                 android:layout_height="@dimen/len_20"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/len_8"
                 android:layout_marginRight="@dimen/len_8"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_person"
-                app:tint="@color/colorAccent" />
+                android:src="@drawable/ic_name"
+                app:tint="@color/black_alpha_48" />
 
-            <EditText
+            <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/edit_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -153,7 +152,7 @@
                 android:paddingTop="@dimen/len_8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/textPrimary"
-                android:textColorHint="@color/textSecond"
+                android:textColorHint="@color/black_alpha_64"
                 android:textCursorDrawable="@drawable/ic_cursor"
                 android:textSize="@dimen/font_14" />
 
@@ -169,27 +168,30 @@
         android:paddingEnd="@dimen/len_16"
         android:paddingStart="@dimen/len_16">
 
-        <TextView
+        <net.qiujuer.genius.ui.widget.TextView
             android:id="@+id/txt_go_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="@dimen/len_16"
             android:gravity="center"
-            android:text="@string/label_go_login"
-            android:textColor="@color/white"
+            android:text="@string/label_login"
+            android:textColor="@color/black_alpha_128"
             android:textSize="@dimen/font_14"
             android:textStyle="bold" />
 
 
-        <ImageView
+        <net.qiujuer.genius.ui.widget.ImageView
+            android:id="@+id/button_go_login"
             android:layout_width="@dimen/len_12"
             android:layout_height="@dimen/len_12"
             android:layout_gravity="end|center_vertical"
             android:contentDescription="@string/app_name"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_direction_right"
-            app:tint="@color/white" />
+            android:src="@drawable/ic_right_arrow"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/black_alpha_128" />
 
     </FrameLayout>
 
@@ -209,6 +211,7 @@
             android:layout_width="@dimen/len_172"
             android:layout_height="@dimen/len_44"
             android:layout_gravity="center"
+            android:gravity="center"
             android:background="@drawable/sel_btn_bg_black_alpha_44"
             android:text="@string/label_register"
             android:textColor="@color/white"

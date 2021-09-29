@@ -33,7 +33,7 @@
             android:orientation="horizontal"
             android:padding="@dimen/len_4">
 
-            <ImageView
+            <net.qiujuer.genius.ui.widget.ImageView
                 android:layout_width="@dimen/len_20"
                 android:layout_height="@dimen/len_20"
                 android:layout_gravity="center_vertical"
@@ -41,9 +41,9 @@
                 android:layout_marginRight="@dimen/len_8"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_phone"
-                app:tint="@color/colorAccent" />
+                app:tint="@color/black_alpha_48" />
 
-            <EditText
+            <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/edit_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,17 +75,17 @@
             android:orientation="horizontal"
             android:padding="@dimen/len_4">
 
-            <ImageView
+            <net.qiujuer.genius.ui.widget.ImageView
                 android:layout_width="@dimen/len_20"
                 android:layout_height="@dimen/len_20"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/len_8"
                 android:layout_marginRight="@dimen/len_8"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_key"
-                app:tint="@color/colorAccent" />
+                android:src="@drawable/ic_pwd"
+                app:tint="@color/black_alpha_48" />
 
-            <EditText
+            <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
         android:layout_marginEnd="@dimen/len_16"
         android:layout_marginTop="@dimen/len_16">
 
-        <TextView
+        <net.qiujuer.genius.ui.widget.TextView
             android:id="@+id/txt_go_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
             android:textSize="@dimen/font_14"
             android:textStyle="bold" />
 
-        <ImageView
+        <net.qiujuer.genius.ui.widget.ImageView
             android:layout_width="@dimen/len_12"
             android:layout_height="@dimen/len_12"
             android:layout_gravity="end|center_vertical"
@@ -149,6 +149,7 @@
             android:layout_width="@dimen/len_172"
             android:layout_height="@dimen/len_44"
             android:layout_gravity="center"
+            android:gravity="center"
             android:background="@drawable/sel_btn_bg_black_alpha_44"
             android:text="@string/label_login"
             android:textColor="@color/white"

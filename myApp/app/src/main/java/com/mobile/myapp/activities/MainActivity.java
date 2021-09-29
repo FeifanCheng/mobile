@@ -136,7 +136,7 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
     @SuppressLint("NonConstantResourceId")
     @OnClick(R.id.main_portrait)
     void onClickPortrait() {
-        UserInfoActivity.show(this);
+        UserActivity.show(this);
     }
 
     /**

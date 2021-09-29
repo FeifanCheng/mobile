@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.mobile.myapp.MainActivity">
+    tools:context="com.mobile.myapp.activities.MainActivity">
 
 <!--导航栏-->
     <com.google.android.material.appbar.AppBarLayout
@@ -58,18 +58,6 @@
                 android:scaleType="centerCrop"
                 tools:ignore="RtlHardcoded">
             </com.mobile.util.widget.PortraitView>
-<!--            <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                android:id="@+id/main_portrait"-->
-<!--                android:padding="@dimen/len_4"-->
-<!--                android:layout_width="@dimen/len_40"-->
-<!--                android:layout_height="@dimen/len_40"-->
-<!--                android:layout_margin="@dimen/len_6"-->
-<!--                android:layout_gravity="left"-->
-<!--                android:src="@drawable/portrait"-->
-<!--                android:clickable="true"-->
-<!--                android:focusable="true"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                tools:ignore="RtlHardcoded"/>-->
         </FrameLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

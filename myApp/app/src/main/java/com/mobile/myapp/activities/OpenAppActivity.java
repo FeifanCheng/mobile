@@ -1,7 +1,5 @@
 package com.mobile.myapp.activities;
 
-import static com.mobile.myapp.tools.ImgSelector.PHOTO_REQUEST_CAMERA;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 
@@ -21,7 +19,7 @@ public class OpenAppActivity extends Activity {
     }
 
 
-    // TODO: 真机测试一下网络权限
+    // TODO: 真机测试一下网络权限，虚拟机上生效了
     @Override
     protected void onResume() {
         super.onResume();

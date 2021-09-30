@@ -1,4 +1,4 @@
-package com.mobile.util.helper;
+package com.mobile.factory.helper.network;
 
 import android.content.Context;
 import android.os.Build;

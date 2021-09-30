@@ -43,6 +43,7 @@ public class GsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<
                 .serializeNulls()
                 // 仅仅处理带有@Expose注解的变量
                 .excludeFieldsWithoutExposeAnnotation()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 // 支持Map
                 .enableComplexMapKeySerialization();
         // 添加对Java8LocalDateTime时间类型的支持

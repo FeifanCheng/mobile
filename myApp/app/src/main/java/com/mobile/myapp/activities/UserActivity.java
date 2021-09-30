@@ -12,9 +12,9 @@ import com.mobile.myapp.tools.ImgSelector;
 import com.mobile.util.app.Activity;
 
 /**
- * 更新用户信息
+ *
  */
-public class UserInfoActivity extends Activity {
+public class UserActivity extends Activity {
     private Fragment curFragment;
 
     /**
@@ -23,20 +23,20 @@ public class UserInfoActivity extends Activity {
      * @param context Context
      */
     public static void show(Context context) {
-        context.startActivity(new Intent(context, UserInfoActivity.class));
+        context.startActivity(new Intent(context, UserActivity.class));
     }
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.userinfo_activity;
+        return R.layout.user_activity;
     }
 
     @Override
     protected void initialWidget() {
         super.initialWidget();
         // 一定要把当前对应的selector丢进去
-        curFragment = new UpdateInfoFragment(new ImgSelector(UserInfoActivity.this,
-                UserInfoActivity.this));
+        curFragment = new UpdateInfoFragment(new ImgSelector(UserActivity.this,
+                UserActivity.this));
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.userinfo_container, curFragment)
@@ -49,5 +49,4 @@ public class UserInfoActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         curFragment.onActivityResult(requestCode, resultCode, data);
     }
-
 }

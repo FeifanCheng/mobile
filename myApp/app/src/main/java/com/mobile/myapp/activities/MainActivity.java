@@ -19,6 +19,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.myapp.R;
+import com.mobile.myapp.fragments.account.RegisterFragment;
 import com.mobile.myapp.fragments.main_page.ContactsFragment;
 import com.mobile.myapp.fragments.main_page.GroupsFragment;
 import com.mobile.myapp.fragments.main_page.HomeFragment;
@@ -122,12 +123,12 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
     }
 
     /**
-     * 浮动按钮监听事件（添加联系人）
+     * 浮动按钮监听事件（添加联系人） TODO: 改，测试用的
      */
     @SuppressLint("NonConstantResourceId")
     @OnClick(R.id.main_float)
     void onClickFloat() {
-
+       AccountActivity.show(this);
     }
 
     /**
@@ -136,7 +137,7 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
     @SuppressLint("NonConstantResourceId")
     @OnClick(R.id.main_portrait)
     void onClickPortrait() {
-        UserInfoActivity.show(this);
+        UserActivity.show(this);
     }
 
     /**

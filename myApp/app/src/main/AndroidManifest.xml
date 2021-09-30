@@ -28,8 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mobile.myapp.activities.UserInfoActivity" />
+        <activity android:name="com.mobile.myapp.activities.UserActivity" />
         <activity android:name="com.mobile.myapp.activities.MainActivity" />
+        <activity android:name="com.mobile.myapp.activities.AccountActivity" />
 
         <!--        图片选择器框架，不用管-->
         <activity android:name="com.yongchun.library.view.ImageSelectorActivity" />

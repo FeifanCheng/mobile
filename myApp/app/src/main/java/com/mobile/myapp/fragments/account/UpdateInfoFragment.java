@@ -18,7 +18,7 @@ import androidx.annotation.RequiresApi;
 import com.mobile.myapp.R;
 import com.mobile.myapp.tools.ImgSelector;
 import com.mobile.util.app.Fragment;
-import com.mobile.util.helper.UploadHelper;
+import com.mobile.factory.helper.network.UploadHelper;
 import com.mobile.util.utils.FileUtils;
 import com.mobile.util.widget.PortraitView;
 

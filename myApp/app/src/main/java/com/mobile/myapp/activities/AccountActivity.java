@@ -42,7 +42,7 @@ public class AccountActivity extends Activity implements ViewTransfer {
         super.initialWidget();
 
         // 初始化Fragment，默认是登录
-        curFragment = new LoginFragment();
+        curFragment = loginFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.lay_container, curFragment)
@@ -55,7 +55,25 @@ public class AccountActivity extends Activity implements ViewTransfer {
      */
     @Override
     public void transfer() {
+        Fragment fragment;
+        if (curFragment == loginFragment) {
+            if (registerFragment == null) {
+                //默认情况下为null，
+                //第一次之后就不为null了
+                registerFragment = new RegisterFragment();
+            }
+            fragment = registerFragment;
+        } else {
+            // 因为默认请求下mLoginFragment已经赋值，无须判断null
+            fragment = loginFragment;
+        }
 
+        // 重新赋值当前正在显示的Fragment
+        curFragment = fragment;
+        // 切换显示ø
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.lay_container, curFragment)
+                .commit();
     }
 
 }

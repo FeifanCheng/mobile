@@ -9,7 +9,7 @@ public interface LoginPresent {
         void requestLogin(String phone, String password);
 
         // 参数验证
-        void checkInput(String input);
+        boolean checkInput(String input);
 
         void start();
 

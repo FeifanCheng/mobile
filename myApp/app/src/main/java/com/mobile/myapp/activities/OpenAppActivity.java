@@ -3,23 +3,26 @@ package com.mobile.myapp.activities;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.mobile.factory.StaticData.AccountData;
+import com.mobile.factory.Factory;
+import com.mobile.util.StaticData.AccountData;
 import com.mobile.myapp.R;
 import com.mobile.util.app.Activity;
-
-import butterknife.BindView;
 
 /**
  * app启动的时候调起的activity
  * TODO：没有做推送和设备绑定，后面如果有时间可以补一下
  */
 public class OpenAppActivity extends Activity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.open_app;

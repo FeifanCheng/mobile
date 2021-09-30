@@ -21,7 +21,7 @@ public class User extends BaseModel {
     @Column
     private String description;
     @Column
-    private int sex = 0;
+    private int sex;
     @Column
     private Date updateAt; // 用户信息更新时间
     @Column
@@ -35,6 +35,23 @@ public class User extends BaseModel {
 
     public String getNote() {
         return note;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", portrait='" + portrait + '\'' +
+                ", phone='" + phone + '\'' +
+                ", description='" + description + '\'' +
+                ", sex=" + sex +
+                ", updateAt=" + updateAt +
+                ", follows=" + follows +
+                ", followings=" + followings +
+                ", isFollow=" + isFollow +
+                ", note='" + note + '\'' +
+                '}';
     }
 
     public void setNote(String note) {
@@ -113,7 +130,7 @@ public class User extends BaseModel {
         this.followings = followings;
     }
 
-    public Boolean getFollow() {
+    public Boolean isFollow() {
         return isFollow;
     }
 

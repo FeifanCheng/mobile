@@ -1,15 +1,17 @@
-package com.mobile.factory.StaticData;
+package com.mobile.util.StaticData;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.mobile.factory.Factory;
+import com.mobile.util.app.Application;
 import com.mobile.util.model.api.account.AccountResponseModel;
 import com.mobile.util.model.db.entity.User;
+import com.mobile.util.model.db.entity.User_Table;
 import com.raizlabs.android.dbflow.StringUtils;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 /**
- * 存储账户持久化数据（token）
+ * 存储账户持久化数据
  */
 public class AccountData {
     private static String token;
@@ -34,6 +36,7 @@ public class AccountData {
     public static void save(AccountResponseModel accountResponseModel) {
         AccountData.userId = accountResponseModel.getUser().getId();
         AccountData.userAccount = accountResponseModel.getUser().getPhone();
+        setToken(accountResponseModel.getToken());
     }
 
     /**
@@ -49,6 +52,7 @@ public class AccountData {
 
     /**
      * 如果token不为空，则是已经登录了
+     *
      * @return
      */
     public static boolean isLogin() {
@@ -58,15 +62,22 @@ public class AccountData {
 
     /**
      * 设置并存储token
+     *
      * @param token
      */
     public static void setToken(String token) {
         AccountData.token = token;
-        AccountData.save(Factory.app());
+        AccountData.save(Application.getApp());
     }
 
     /**
      * 获取当前user
      */
-    public static User
+    public static User getUser() {
+        User user = new User();
+        if (!StringUtils.isNullOrEmpty(userId)) {
+            user = SQLite.select().from(User.class).where(User_Table.id.eq(userId)).querySingle();
+        }
+        return user;
+    }
 }

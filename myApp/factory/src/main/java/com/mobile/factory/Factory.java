@@ -2,7 +2,7 @@ package com.mobile.factory;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mobile.factory.StaticData.AccountData;
+import com.mobile.util.StaticData.AccountData;
 import com.mobile.util.app.Application;
 import com.mobile.util.model.api.ResponseModel;
 import com.mobile.util.model.db.DBExclusionStrategy;
@@ -31,13 +31,6 @@ public class Factory {
                 .create();
     }
 
-    /**
-     * 加载数据库和已经持久化的token
-     */
-    public static void initial() {
-        FlowManager.init(new FlowConfig.Builder(app()).openDatabasesOnInit(true).build());
-        AccountData.load(app());
-    }
 
     public static Factory getFactory() {
         return factory;

@@ -2,12 +2,13 @@ package com.mobile.factory.helper.account;
 
 import com.mobile.factory.Factory;
 import com.mobile.factory.R;
-import com.mobile.factory.StaticData.AccountData;
+import com.mobile.util.StaticData.AccountData;
 import com.mobile.factory.helper.network.CallRemote;
 import com.mobile.factory.helper.network.NetworkHelper;
 import com.mobile.util.data.DataSource;
 import com.mobile.util.model.api.ResponseModel;
 import com.mobile.util.model.api.account.AccountResponseModel;
+import com.mobile.util.model.api.account.LoginModel;
 import com.mobile.util.model.api.account.RegisterModel;
 import com.mobile.util.model.db.entity.User;
 
@@ -28,6 +29,28 @@ public class AccountHelper {
     public static void register(RegisterModel registerModel, DataSource.Callback<User> callback) {
         CallRemote callRemote = NetworkHelper.getRetrofit().create(CallRemote.class);
         Call<ResponseModel<AccountResponseModel>> responseModelCall = callRemote.register(registerModel);
+        request(responseModelCall, callback);
+    }
+
+    /**
+     * 封装登录请求
+     *
+     * @param loginModel 一个请求model
+     * @param callback      处理请求结果的回调
+     */
+    public static void login(LoginModel loginModel, DataSource.Callback<User> callback) {
+        CallRemote callRemote = NetworkHelper.getRetrofit().create(CallRemote.class);
+        Call<ResponseModel<AccountResponseModel>> responseModelCall = callRemote.login(loginModel);
+        request(responseModelCall, callback);
+    }
+
+    /**
+     * 封装的请求方法
+     * @param responseModelCall
+     * @param callback
+     */
+    public static void request(Call<ResponseModel<AccountResponseModel>> responseModelCall,
+                               DataSource.Callback<User> callback){
         // 发起请求
         responseModelCall.enqueue(new Callback<ResponseModel<AccountResponseModel>>() {
             @Override
@@ -58,4 +81,5 @@ public class AccountHelper {
             }
         });
     }
+
 }

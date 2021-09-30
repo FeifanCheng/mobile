@@ -2,14 +2,14 @@ package com.mobile.myapp.fragments.account;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.mobile.util.StaticData.AccountData;
 import com.mobile.factory.present.account.LoginPresent;
 import com.mobile.factory.present.account.LoginPresentImpl;
-import com.mobile.factory.present.account.RegisterPresent;
-import com.mobile.factory.present.account.RegisterPresentImpl;
 import com.mobile.myapp.R;
 import com.mobile.myapp.activities.MainActivity;
 import com.mobile.util.app.Fragment;
@@ -44,8 +44,8 @@ public class LoginFragment extends Fragment implements LoginPresent.View {
     @BindView(R.id.btn_submit)
     Button submit_button;
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.button_go_register)
-    ImageView go_register_button;
+    @BindView(R.id.go_register)
+    FrameLayout go_register_button;
 
     // presenter初始化，返回实现类
     protected LoginPresent.Presenter initialPresenter(){
@@ -76,7 +76,7 @@ public class LoginFragment extends Fragment implements LoginPresent.View {
      * 跳转注册
      */
     @SuppressLint("NonConstantResourceId")
-    @OnClick(R.id.button_go_register)
+    @OnClick(R.id.go_register)
     void onGoLoginClick(){
         // 跳转页面
         viewTransfer.transfer();
@@ -96,6 +96,7 @@ public class LoginFragment extends Fragment implements LoginPresent.View {
     @Override
     public void LoginSuccess() {
         Toast.makeText(getContext(), "Login succeed!", Toast.LENGTH_SHORT).show();
+
         // 跳转到main并结束当前activity
         MainActivity.show(Objects.requireNonNull(getContext()));
         Objects.requireNonNull(getActivity()).finish();

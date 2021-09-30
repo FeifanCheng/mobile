@@ -2,12 +2,12 @@ package com.mobile.myapp.fragments.account;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.text.style.TtsSpan;
-import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.mobile.util.StaticData.AccountData;
 import com.mobile.factory.present.account.RegisterPresent;
 import com.mobile.factory.present.account.RegisterPresentImpl;
 import com.mobile.myapp.R;
@@ -47,8 +47,8 @@ public class RegisterFragment extends Fragment implements RegisterPresent.View {
     @BindView(R.id.btn_submit)
     Button submit_button;
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.button_go_login)
-    ImageView go_login_button;
+    @BindView(R.id.go_login)
+    FrameLayout go_login_button;
 
 
     // presenter初始化，返回实现类
@@ -86,7 +86,7 @@ public class RegisterFragment extends Fragment implements RegisterPresent.View {
      * 跳转登录
      */
     @SuppressLint("NonConstantResourceId")
-    @OnClick(R.id.button_go_login)
+    @OnClick(R.id.go_login)
     void onGoLoginClick(){
         // 跳转页面
         viewTransfer.transfer();

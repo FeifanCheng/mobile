@@ -15,9 +15,9 @@ import net.qiujuer.genius.ui.widget.ImageView;
 import butterknife.BindView;
 
 public class AccountActivity extends Activity implements ViewTransfer {
-    private Fragment mCurFragment;
-    private Fragment mLoginFragment;
-    private Fragment mRegisterFragment;
+    private Fragment curFragment;
+    private Fragment loginFragment;
+    private Fragment registerFragment;
 
     @BindView(R.id.im_bg)
     ImageView mBg;
@@ -42,10 +42,10 @@ public class AccountActivity extends Activity implements ViewTransfer {
         super.initialWidget();
 
         // 初始化Fragment
-        mCurFragment = new RegisterFragment();
+        curFragment = new RegisterFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.lay_container, mCurFragment)
+                .add(R.id.lay_container, curFragment)
                 .commit();
 
     }

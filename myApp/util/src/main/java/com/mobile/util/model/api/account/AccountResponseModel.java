@@ -1,7 +1,6 @@
 package com.mobile.util.model.api.account;
 
-import com.google.gson.annotations.Expose;
-import com.mobile.util.model.db.User;
+import com.mobile.util.model.db.entity.User;
 
 /**
  * 接口返回账户信息的映射

@@ -125,6 +125,7 @@
             android:textStyle="bold" />
 
         <net.qiujuer.genius.ui.widget.ImageView
+            android:id="@+id/button_go_register"
             android:layout_width="@dimen/len_12"
             android:layout_height="@dimen/len_12"
             android:layout_gravity="end|center_vertical"

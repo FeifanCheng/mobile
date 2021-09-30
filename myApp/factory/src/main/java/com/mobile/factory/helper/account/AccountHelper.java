@@ -2,13 +2,14 @@ package com.mobile.factory.helper.account;
 
 import com.mobile.factory.Factory;
 import com.mobile.factory.R;
+import com.mobile.factory.StaticData.AccountData;
 import com.mobile.factory.helper.network.CallRemote;
 import com.mobile.factory.helper.network.NetworkHelper;
 import com.mobile.util.data.DataSource;
 import com.mobile.util.model.api.ResponseModel;
 import com.mobile.util.model.api.account.AccountResponseModel;
 import com.mobile.util.model.api.account.RegisterModel;
-import com.mobile.util.model.db.User;
+import com.mobile.util.model.db.entity.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,16 +39,12 @@ public class AccountHelper {
                     // 如果是个成功的请求
                     AccountResponseModel responseResult = responseModel.getResponse_result();
                     User user = responseResult.getUser();
-                    if (responseResult.isBindService()) {
-                        // 如果已经绑定，直接返回即可
-                        // TODO：拿用户并写入客户端的数据库
-
-                        callback.onSuccess(user);
-                    } else {
-                        // TODO：暂时跳转，要绑定设备的（没做推送。。太麻烦了）
-                        callback.onSuccess(user);
-                    }
-
+                    // TODO：没验证设备绑定（没做推送。。太麻烦了）
+                    // 如果已经绑定，直接返回即可
+                    // 拿用户并写入客户端的数据库，然后把当前user的id和token存储一下
+                    user.save();
+                    AccountData.save(responseResult);
+                    callback.onSuccess(user);
                 } else {
                     // 如果失败了，处理失败的提示
                     int error = Factory.transferResponseErrorCode(responseModel);

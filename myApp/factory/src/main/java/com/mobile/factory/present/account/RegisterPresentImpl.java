@@ -4,7 +4,7 @@ import com.mobile.factory.R;
 import com.mobile.util.data.DataSource;
 import com.mobile.factory.helper.account.AccountHelper;
 import com.mobile.util.model.api.account.RegisterModel;
-import com.mobile.util.model.db.User;
+import com.mobile.util.model.db.entity.User;
 import com.raizlabs.android.dbflow.StringUtils;
 
 import net.qiujuer.genius.kit.handler.Run;
@@ -35,6 +35,12 @@ public class RegisterPresentImpl implements RegisterPresent.Presenter {
         view.setPresenter(this); // 把presenter设置回去
     }
 
+    /**
+     * 发起注册请求
+     * @param phone
+     * @param name
+     * @param password
+     */
     @Override
     public void requestRegister(String phone, String name, String password) {
         start();

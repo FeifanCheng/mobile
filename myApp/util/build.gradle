@@ -60,6 +60,11 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
     implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
 
+    annotationProcessor "com.github.raizlabs.dbflow:dbflow-processor:${rootProject.ext.dbflowVersion}"
+    // use kapt for kotlin apt
+    implementation "com.github.raizlabs.dbflow:dbflow-core:${rootProject.ext.dbflowVersion}"
+    implementation "com.github.raizlabs.dbflow:dbflow:${rootProject.ext.dbflowVersion}"
+
 
 
 }

@@ -41,8 +41,8 @@ public class AccountActivity extends Activity implements ViewTransfer {
     protected void initialWidget() {
         super.initialWidget();
 
-        // 初始化Fragment
-        curFragment = new RegisterFragment();
+        // 初始化Fragment，默认是登录
+        curFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.lay_container, curFragment)
@@ -50,50 +50,12 @@ public class AccountActivity extends Activity implements ViewTransfer {
 
     }
 
+    /**
+     * 界面跳转
+     */
     @Override
     public void transfer() {
 
     }
 
-//        // 初始化背景
-//        Glide.with(this)
-//                .load(R.drawable.bg_src_tianjin)
-//                .centerCrop() //居中剪切
-//                .into(new ViewTarget<ImageView, GlideDrawable>(mBg) {
-//                    @Override
-//                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-//                        // 拿到glide的Drawable
-//                        Drawable drawable = resource.getCurrent();
-//                        // 使用适配类进行包装
-//                        drawable = DrawableCompat.wrap(drawable);
-//                        drawable.setColorFilter(UiCompat.getColor(getResources(), R.color.colorAccent),
-//                                PorterDuff.Mode.SCREEN); // 设置着色的效果和颜色，蒙板模式
-//                        // 设置给ImageView
-//                        this.view.setImageDrawable(drawable);
-//                    }
-//                });
-//    }
-
-//    @Override
-//    public void triggerView() {
-//        Fragment fragment;
-//        if (mCurFragment == mLoginFragment) {
-//            if (mRegisterFragment == null) {
-//                //默认情况下为null，
-//                //第一次之后就不为null了
-//                mRegisterFragment = new RegisterFragment();
-//            }
-//            fragment = mRegisterFragment;
-//        } else {
-//            // 因为默认请求下mLoginFragment已经赋值，无须判断null
-//            fragment = mLoginFragment;
-//        }
-//
-//        // 重新赋值当前正在显示的Fragment
-//        mCurFragment = fragment;
-//        // 切换显示ø
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.lay_container, fragment)
-//                .commit();
-//    }
 }

@@ -3,24 +3,23 @@ package com.mobile.myapp.activities;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.mobile.factory.StaticData.AccountData;
 import com.mobile.myapp.R;
 import com.mobile.util.app.Activity;
 
+import butterknife.BindView;
+
 /**
  * app启动的时候调起的activity
+ * TODO：没有做推送和设备绑定，后面如果有时间可以补一下
  */
 public class OpenAppActivity extends Activity {
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     protected int getContentLayoutId() {
         return R.layout.open_app;
@@ -38,7 +37,12 @@ public class OpenAppActivity extends Activity {
                 == PackageManager.PERMISSION_GRANTED)
                 && (ContextCompat.checkSelfPermission(OpenAppActivity.this, Manifest.permission.INTERNET)
                 == PackageManager.PERMISSION_GRANTED)) {
-            MainActivity.show(this);
+            // 如果已经登录了，直接进主页面
+            if (AccountData.isLogin()) {
+                MainActivity.show(this);
+            } else {
+                AccountActivity.show(this);
+            }
             finish();
         } else {
             //请求权限

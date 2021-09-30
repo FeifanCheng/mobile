@@ -1,21 +1,36 @@
-package com.mobile.util.model.db;
+package com.mobile.util.model.db.entity;
 
-import com.google.gson.annotations.Expose;
+import com.mobile.util.model.db.Database;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import java.util.Date;
 
-public class User {
+@Table(database = Database.class)
+public class User extends BaseModel {
+    @PrimaryKey
     private String id;
+    @Column
     private String name;
+    @Column
     private String portrait;
+    @Column
     private String phone;
+    @Column
     private String description;
+    @Column
     private int sex = 0;
+    @Column
     private Date updateAt; // 用户信息更新时间
+    @Column
     private int follows; // 关注数
+    @Column
     private int followings; // 粉丝数
+    @Column
     private Boolean isFollow; // 我与当前用户是否关注
-
+    @Column
     private String note;  // 备注信息
 
     public String getNote() {

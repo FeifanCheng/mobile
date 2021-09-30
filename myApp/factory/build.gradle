@@ -54,4 +54,7 @@ dependencies {
     implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
     implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
+    implementation "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
+    // https://mvnrepository.com/artifact/org.jasypt/jasypt
+    implementation("org.jasypt:jasypt:1.9.3")
 }

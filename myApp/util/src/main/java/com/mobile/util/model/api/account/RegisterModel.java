@@ -1,4 +1,4 @@
-package com.mobile.util.model.api;
+package com.mobile.util.model.api.account;
 
 import com.google.gson.annotations.Expose;
 

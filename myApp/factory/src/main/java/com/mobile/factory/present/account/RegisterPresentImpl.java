@@ -2,8 +2,8 @@ package com.mobile.factory.present.account;
 
 import com.mobile.factory.R;
 import com.mobile.util.data.DataSource;
-import com.mobile.util.helper.account.AccountHelper;
-import com.mobile.util.model.api.RegisterModel;
+import com.mobile.factory.helper.account.AccountHelper;
+import com.mobile.util.model.api.account.RegisterModel;
 import com.mobile.util.model.db.User;
 import com.raizlabs.android.dbflow.StringUtils;
 

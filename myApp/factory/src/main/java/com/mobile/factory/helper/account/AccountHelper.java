@@ -1,5 +1,6 @@
 package com.mobile.factory.helper.account;
 
+import com.mobile.factory.Factory;
 import com.mobile.factory.R;
 import com.mobile.factory.helper.network.CallRemote;
 import com.mobile.factory.helper.network.NetworkHelper;
@@ -35,20 +36,22 @@ public class AccountHelper {
                 ResponseModel<AccountResponseModel> responseModel = response.body();
                 if (responseModel.getCode() == 1) {
                     // 如果是个成功的请求
-                    // 如果已经绑定，直接返回即可
                     AccountResponseModel responseResult = responseModel.getResponse_result();
+                    User user = responseResult.getUser();
                     if (responseResult.isBindService()) {
-                        User user = responseResult.getUser();
+                        // 如果已经绑定，直接返回即可
                         // TODO：拿用户并写入客户端的数据库
 
                         callback.onSuccess(user);
                     } else {
-                        // TODO：绑定设备
+                        // TODO：暂时跳转，要绑定设备的（没做推送。。太麻烦了）
+                        callback.onSuccess(user);
                     }
 
                 } else {
-                    // 如果失败了，处理失败的提示 TODO
-//                    callback.onFail();
+                    // 如果失败了，处理失败的提示
+                    int error = Factory.transferResponseErrorCode(responseModel);
+                    callback.onFail(error);
                 }
             }
 

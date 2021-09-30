@@ -27,4 +27,7 @@
     <string name="data_rsp_error_account_no_permission">You don\'t have permission to operate!</string>
     <string name="data_rsp_error_bind_service">Failed to bind service!</string>
 
+    <string name="app_name">myApp</string>
+    <string name="freechat">FreeChat</string>
+
 </resources>

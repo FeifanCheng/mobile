@@ -104,7 +104,6 @@ public class LoginFragment extends Fragment implements LoginPresent.View {
 
     @Override
     public void LoginFail(int error) {
-        // TODO：先这样
         Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
 
         // 停止loading并恢复输入
@@ -116,7 +115,6 @@ public class LoginFragment extends Fragment implements LoginPresent.View {
 
     @Override
     public void loading() {
-        // TODO：先这样
         Toast.makeText(getContext(), "loading", Toast.LENGTH_SHORT).show();
 
         // 开始loading并禁止输入

@@ -2,13 +2,10 @@ package com.mobile.myapp.activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.mobile.factory.Factory;
 import com.mobile.util.StaticData.AccountData;
 import com.mobile.myapp.R;
 import com.mobile.util.app.Activity;
@@ -18,10 +15,6 @@ import com.mobile.util.app.Activity;
  * TODO：没有做推送和设备绑定，后面如果有时间可以补一下
  */
 public class OpenAppActivity extends Activity {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     protected int getContentLayoutId() {
@@ -58,4 +51,6 @@ public class OpenAppActivity extends Activity {
             }, 1);
         }
     }
+
+
 }

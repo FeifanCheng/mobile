@@ -3,7 +3,9 @@ package com.mobile.myApp.activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.FileUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,9 +26,12 @@ import com.mobile.myApp.fragments.main_page.GroupsFragment;
 import com.mobile.myApp.fragments.main_page.HomeFragment;
 import com.mobile.util.StaticData.AccountData;
 import com.mobile.util.app.Activity;
+import com.mobile.util.model.db.entity.User;
 
 import net.qiujuer.genius.ui.widget.FloatActionButton;
 
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -81,7 +86,7 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     @Override
     protected boolean checkBundle(Bundle bundle) {
-        if(AccountData.userInfoFinished()){
+        if (AccountData.userInfoFinished()) {
             return super.checkBundle(bundle);
         }
         UserActivity.show(this);
@@ -104,7 +109,13 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
         // 设置底部导航栏回调
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        // TODO: 设置头像，从服务器拿
+        // 设置头像，从数据库拿
+        User user = AccountData.getUser();
+        if (user != null) {
+            File file = new File(user.getPortrait());
+            Uri uri = Uri.fromFile(file);
+            portraitView.setImageURI(uri);
+        }
     }
 
     @Override

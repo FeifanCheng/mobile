@@ -34,6 +34,7 @@ public class UploadHelper {
 
     /**
      * !! 不要改密钥
+     *
      * @param context
      * @return
      */
@@ -69,6 +70,7 @@ public class UploadHelper {
             return null;
         }
     }
+
 
     /**
      * 上传音频
@@ -121,7 +123,7 @@ public class UploadHelper {
         return String.format("audio/%s/%s.mp3", key[0], key[1]);
     }
 
-    public static String[] getKey(String path){
+    public static String[] getKey(String path) {
         BasicTextEncryptor textEncryptor = ENCRYPTOR.getEncryptor();
         String fileMd5 = textEncryptor.encrypt(path);
         return new String[]{DateFormat.format("yyyyMM", new Date()).toString(), fileMd5};

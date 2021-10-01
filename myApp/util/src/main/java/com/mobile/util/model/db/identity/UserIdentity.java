@@ -6,6 +6,9 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 
 import java.util.Date;
 
+/**
+ * 对应userCard
+ */
 public class UserIdentity {
     private String id;
     private String name;

@@ -52,10 +52,10 @@ public class AccountData {
     }
 
     /**
-     * 加载持久化的token
+     * 加载持久化的逆袭
      *
      * @param context
-     * @return 获取token，默认为空
+     * @return 获取token和userid，默认为空
      */
     public static void load(Context context) {
         SharedPreferences sp = context.getSharedPreferences(AccountData.class.getName(), Context.MODE_PRIVATE);

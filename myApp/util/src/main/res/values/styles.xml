@@ -4,8 +4,8 @@
         <item name="toolbarTitleColor">@color/white</item>
         <item name="toolbarMenuIconColor">@color/white</item>
         <item name="colorControlHighlight">@color/textSecond</item>
-        <item name="android:windowBackground">@color/windowsBackgroundLight</item>
         <item name="android:statusBarColor">@null</item>
+        <item name="android:windowBackground">@drawable/launch</item>
     </style>
 
     <style name="MyToolbar" parent="android:Widget">

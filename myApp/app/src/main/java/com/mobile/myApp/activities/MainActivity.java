@@ -103,6 +103,8 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
         // 设置底部导航栏回调
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        // TODO: 设置头像，从服务器拿
     }
 
     @Override

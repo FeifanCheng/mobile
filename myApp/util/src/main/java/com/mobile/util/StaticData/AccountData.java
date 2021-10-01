@@ -2,6 +2,7 @@ package com.mobile.util.StaticData;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.mobile.util.app.Application;
 import com.mobile.util.model.api.account.AccountResponseModel;
@@ -29,13 +30,14 @@ public class AccountData {
     }
 
     /**
-     * 把token持久化
+     * 把User数据持久化
      *
      * @param context
      */
     public static void save(Context context) {
         SharedPreferences sp = context.getSharedPreferences(AccountData.class.getName(), Context.MODE_PRIVATE);
         sp.edit().putString("token", token).apply();
+        sp.edit().putString("userId", userId).apply();
     }
 
     /**
@@ -58,6 +60,11 @@ public class AccountData {
     public static void load(Context context) {
         SharedPreferences sp = context.getSharedPreferences(AccountData.class.getName(), Context.MODE_PRIVATE);
         AccountData.token = sp.getString("token", "");
+        AccountData.userId = sp.getString("userId", "");
+    }
+
+    public static String getToken() {
+        return token;
     }
 
     /**
@@ -99,6 +106,10 @@ public class AccountData {
     public static boolean userInfoFinished() {
         User user = getUser();
         if (user != null) {
+            if(user.getId() != null && user.getDescription() != null){
+                Log.e("User", user.getId());
+                Log.e("User", user.getDescription());
+            }
             return !StringUtils.isNullOrEmpty(user.getDescription())
                     && user.getSex() != 0
                     && !StringUtils.isNullOrEmpty(user.getPortrait());

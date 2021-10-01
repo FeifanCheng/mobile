@@ -11,9 +11,13 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +44,7 @@ import java.io.File;
 import java.util.Objects;
 
 import butterknife.BindView;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 /**
@@ -51,6 +56,7 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
     private UpdateInfoPresent.Presenter updateInfoPresent;
     private String localPortraitPath;  // 本地选择的头像地址
     private boolean isMale = true;  // 性别，默认男
+    private String downloadURL; // 服务器上的下载地址
 
     // 控件绑定
     @SuppressLint("NonConstantResourceId")
@@ -68,6 +74,15 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.edit_desc)
     EditText description;
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.radio_group)
+    RadioGroup radioGroup;
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.male)
+    RadioButton male;
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.female)
+    RadioButton female;
 
 
     public UpdateInfoFragment(ImgSelector imgSelector) {
@@ -91,14 +106,9 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
         updateInfoPresent = initialPresenter();
     }
 
-    /**
-     * 提交更改
-     */
-    @SuppressLint("NonConstantResourceId")
-    @OnClick(R.id.btn_submit)
-    void onSubmitClick() {
-        String desc = description.getText().toString();
-        updateInfoPresent.requestUpdate(localPortraitPath, desc, isMale);
+    @Override
+    public void setPresenter(UpdateInfoPresent.Presenter presenter) {
+        this.updateInfoPresent = presenter;
     }
 
 
@@ -112,24 +122,48 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
     }
 
     /**
-     * 调起性别更改，简单做个反向就可以
-     */
-    @SuppressLint({"NonConstantResourceId", "UseCompatLoadingForDrawables"})
-    @OnClick(R.id.im_sex)
-    void onSexClick() {
-        isMale = !isMale;
-        Drawable drawable = null;
-        if (isMale) {
-            drawable = getResources().getDrawable(R.drawable.ic_man);
-        } else {
-            drawable = getResources().getDrawable(R.drawable.ic_womam);
+     * 性别选中事件
+     *
+     * @param view
+     * @param ischanged
+     **/
+    @SuppressLint("UseCompatLoadingForDrawables")
+    @OnCheckedChanged({R.id.male, R.id.female})
+    public void onRadioCheck(CompoundButton view, boolean ischanged) {
+        switch (view.getId()) {
+            case R.id.male:
+                if (ischanged) {
+                    isMale = true;
+                    sex.setImageDrawable(getResources().getDrawable(R.drawable.ic_man));
+                }
+                break;
+            case R.id.female:
+                if (ischanged) {
+                    isMale = false;
+                    sex.setImageDrawable(getResources().getDrawable(R.drawable.ic_womam));
+                }
+                break;
+            default:
+                break;
         }
-        sex.setImageDrawable(drawable);
     }
 
-    @Override
-    public void setPresenter(UpdateInfoPresent.Presenter presenter) {
-        this.updateInfoPresent = presenter;
+    /**
+     * 提交更改
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("NonConstantResourceId")
+    @OnClick(R.id.btn_submit)
+    void onSubmitClick() {
+        String desc = description.getText().toString();
+        // 先把图片上传了
+        try {
+            downloadURL = UploadHelper.uploadImage(localPortraitPath, getContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // 发起请求更新数据库
+        updateInfoPresent.requestUpdate(localPortraitPath, desc, isMale);
     }
 
     @Override

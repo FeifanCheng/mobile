@@ -1,65 +1,22 @@
-package com.mobile.util.model.db.entity;
+package com.mobile.util.model.db.identity;
 
-import com.mobile.util.model.db.Database;
+import com.mobile.util.model.db.entity.User;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
-import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import java.util.Date;
 
-@Table(database = Database.class)
-public class User extends BaseModel {
-    @PrimaryKey
+public class UserIdentity {
     private String id;
-    @Column
     private String name;
-    @Column
     private String portrait;
-    @Column
     private String phone;
-    @Column
     private String description;
-    @Column
     private int sex;
-    @Column
     private Date updateAt; // 用户信息更新时间
-    @Column
     private int follows; // 关注数
-    @Column
     private int followings; // 粉丝数
-    @Column
     private Boolean isFollow; // 我与当前用户是否关注
-    @Column
-    private String note;  // 备注信息
-
-    public static final int MALE = 1;
-    public static final int FEMALE = 2;
-
-    public String getNote() {
-        return note;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", portrait='" + portrait + '\'' +
-                ", phone='" + phone + '\'' +
-                ", description='" + description + '\'' +
-                ", sex=" + sex +
-                ", updateAt=" + updateAt +
-                ", follows=" + follows +
-                ", followings=" + followings +
-                ", isFollow=" + isFollow +
-                ", note='" + note + '\'' +
-                '}';
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
 
     public String getId() {
         return id;
@@ -133,11 +90,31 @@ public class User extends BaseModel {
         this.followings = followings;
     }
 
-    public Boolean isFollow() {
+    public Boolean getFollow() {
         return isFollow;
     }
 
     public void setFollow(Boolean follow) {
         isFollow = follow;
+    }
+
+    // 缓存一个user
+    private transient User user;
+
+    public User build(){
+        if(user == null){
+            user = new User();
+            user.setDescription(description);
+            user.setId(id);
+            user.setName(name);
+            user.setPortrait(portrait);
+            user.setPhone(phone);
+            user.setSex(sex);
+            user.setFollow(isFollow);
+            user.setFollows(follows);
+            user.setFollowings(followings);
+            user.setUpdateAt(updateAt);
+        }
+        return user;
     }
 }

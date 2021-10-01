@@ -1,9 +1,9 @@
-package com.mobile.myapp.tools;
+package com.mobile.myApp.tools;
 
 import android.content.Context;
 import android.graphics.Point;
 
-import com.mobile.myapp.R;
+import com.mobile.myApp.R;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.filter.Filter;
 import com.zhihu.matisse.internal.entity.IncapableCause;

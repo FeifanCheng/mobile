@@ -17,6 +17,16 @@ public class AccountData {
     private static String token;
     private static String userId;
     private static String userAccount;
+    // TODO: 没做绑定
+    private static String pushId;
+
+    public static String getPushId() {
+        return pushId;
+    }
+
+    public static void setPushId(String pushId) {
+        AccountData.pushId = pushId;
+    }
 
     /**
      * 把token持久化
@@ -79,5 +89,20 @@ public class AccountData {
             user = SQLite.select().from(User.class).where(User_Table.id.eq(userId)).querySingle();
         }
         return user;
+    }
+
+    /**
+     * 判断用户信息是否完善
+     *
+     * @return
+     */
+    public static boolean userInfoFinished() {
+        User user = getUser();
+        if (user != null) {
+            return !StringUtils.isNullOrEmpty(user.getDescription())
+                    && user.getSex() != 0
+                    && !StringUtils.isNullOrEmpty(user.getPortrait());
+        }
+        return false;
     }
 }

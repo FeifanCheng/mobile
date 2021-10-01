@@ -1,4 +1,4 @@
-package com.mobile.myapp.activities;
+package com.mobile.myApp.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,9 +6,9 @@ import android.content.Intent;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.mobile.myapp.R;
-import com.mobile.myapp.fragments.account.UpdateInfoFragment;
-import com.mobile.myapp.tools.ImgSelector;
+import com.mobile.myApp.R;
+import com.mobile.myApp.fragments.account.UpdateInfoFragment;
+import com.mobile.myApp.tools.ImgSelector;
 import com.mobile.util.app.Activity;
 
 /**

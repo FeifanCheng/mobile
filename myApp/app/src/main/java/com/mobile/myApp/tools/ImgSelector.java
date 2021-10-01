@@ -1,4 +1,4 @@
-package com.mobile.myapp.tools;
+package com.mobile.myApp.tools;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.os.EnvironmentCompat;
 
-import com.mobile.myapp.R;
+import com.mobile.myApp.R;
 
 import java.io.File;
 import java.util.ArrayList;

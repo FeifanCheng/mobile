@@ -1,4 +1,4 @@
-package com.mobile.myapp.activities;
+package com.mobile.myApp.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,11 +18,11 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mobile.myapp.R;
-import com.mobile.myapp.fragments.account.RegisterFragment;
-import com.mobile.myapp.fragments.main_page.ContactsFragment;
-import com.mobile.myapp.fragments.main_page.GroupsFragment;
-import com.mobile.myapp.fragments.main_page.HomeFragment;
+import com.mobile.myApp.R;
+import com.mobile.myApp.fragments.main_page.ContactsFragment;
+import com.mobile.myApp.fragments.main_page.GroupsFragment;
+import com.mobile.myApp.fragments.main_page.HomeFragment;
+import com.mobile.util.StaticData.AccountData;
 import com.mobile.util.app.Activity;
 
 import net.qiujuer.genius.ui.widget.FloatActionButton;
@@ -73,11 +73,19 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
         context.startActivity(new Intent(context, MainActivity.class));
     }
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    @Override
+    protected boolean checkBundle(Bundle bundle) {
+        if(AccountData.userInfoFinished()){
+            return super.checkBundle(bundle);
+        }
+        UserActivity.show(this);
+        return false; // 之后main activity会结束掉
     }
 
     @Override
@@ -123,16 +131,16 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
     }
 
     /**
-     * 浮动按钮监听事件（添加联系人） TODO: 改，测试用的
+     * 浮动按钮监听事件（添加联系人）
      */
     @SuppressLint("NonConstantResourceId")
     @OnClick(R.id.main_float)
     void onClickFloat() {
-       AccountActivity.show(this);
+
     }
 
     /**
-     * 点击头像监听事件 TODO: 改，测试用的
+     * 点击头像监听事件
      */
     @SuppressLint("NonConstantResourceId")
     @OnClick(R.id.main_portrait)

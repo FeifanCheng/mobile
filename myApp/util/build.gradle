@@ -65,6 +65,9 @@ dependencies {
     implementation "com.github.raizlabs.dbflow:dbflow-core:${rootProject.ext.dbflowVersion}"
     implementation "com.github.raizlabs.dbflow:dbflow:${rootProject.ext.dbflowVersion}"
 
+    implementation 'com.getui:gtsdk:3.2.3.0'  //个推SDK
+    implementation 'com.getui:gtc:3.1.4.0'  //个推核心组件
+
 
 
 }

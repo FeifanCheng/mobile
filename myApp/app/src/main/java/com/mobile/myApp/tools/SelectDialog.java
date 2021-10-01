@@ -1,4 +1,4 @@
-package com.mobile.myapp.tools;
+package com.mobile.myApp.tools;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-import com.mobile.myapp.R;
+import com.mobile.myApp.R;
 
 import java.util.List;
 

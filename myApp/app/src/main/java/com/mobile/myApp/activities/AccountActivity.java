@@ -1,12 +1,12 @@
-package com.mobile.myapp.activities;
+package com.mobile.myApp.activities;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.mobile.myapp.R;
-import com.mobile.myapp.fragments.account.LoginFragment;
-import com.mobile.myapp.fragments.account.RegisterFragment;
-import com.mobile.myapp.fragments.account.ViewTransfer;
+import com.mobile.myApp.R;
+import com.mobile.myApp.fragments.account.LoginFragment;
+import com.mobile.myApp.fragments.account.RegisterFragment;
+import com.mobile.myApp.fragments.account.ViewTransfer;
 import com.mobile.util.app.Activity;
 import com.mobile.util.app.Fragment;
 

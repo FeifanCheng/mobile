@@ -62,7 +62,7 @@ public class AccountHelper {
                     // 如果是个成功的请求
                     AccountResponseModel responseResult = responseModel.getResponse_result();
                     User user = responseResult.getUser();
-                    // TODO：没验证设备绑定（没做推送。。太麻烦了）
+                    // TODO：没验证设备绑定，后面加了个推之后再加上
                     // 如果已经绑定，直接返回即可
                     // 拿用户并写入客户端的数据库，然后把当前user的id和token存储一下
                     user.save();

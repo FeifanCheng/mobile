@@ -1,4 +1,4 @@
-package com.mobile.myapp.fragments.account;
+package com.mobile.myApp.fragments.account;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,15 +7,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.mobile.util.StaticData.AccountData;
 import com.mobile.factory.present.account.RegisterPresent;
 import com.mobile.factory.present.account.RegisterPresentImpl;
-import com.mobile.myapp.R;
-import com.mobile.myapp.activities.MainActivity;
+import com.mobile.myApp.R;
+import com.mobile.myApp.activities.MainActivity;
 import com.mobile.util.app.Fragment;
 
 import net.qiujuer.genius.ui.widget.Button;
-import net.qiujuer.genius.ui.widget.ImageView;
 import net.qiujuer.genius.ui.widget.Loading;
 
 import java.util.Objects;

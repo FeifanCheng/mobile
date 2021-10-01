@@ -1,4 +1,4 @@
-package com.mobile.myapp.activities;
+package com.mobile.myApp.activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -7,12 +7,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.mobile.util.StaticData.AccountData;
-import com.mobile.myapp.R;
+import com.mobile.myApp.R;
 import com.mobile.util.app.Activity;
 
 /**
  * app启动的时候调起的activity
- * TODO：没有做推送和设备绑定，后面如果有时间可以补一下
+ * TODO：没有做推送和设备绑定，后面配好了补一下
  */
 public class OpenAppActivity extends Activity {
 

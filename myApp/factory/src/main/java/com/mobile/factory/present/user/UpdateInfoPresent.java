@@ -1,4 +1,4 @@
-package com.mobile.factory.present.account;
+package com.mobile.factory.present.user;
 
 public interface UpdateInfoPresent {
     interface Presenter {

@@ -5,13 +5,10 @@ import static com.mobile.myApp.tools.ImgSelector.CAMERA_REQUEST_CODE;
 import static com.mobile.myApp.tools.ImgSelector.TAILOR_REQUEST_CODE;
 
 import android.annotation.SuppressLint;
-import android.app.admin.SystemUpdateInfo;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.CompoundButton;
@@ -24,10 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.mobile.factory.present.account.RegisterPresent;
-import com.mobile.factory.present.account.RegisterPresentImpl;
-import com.mobile.factory.present.account.UpdateInfoPresent;
-import com.mobile.factory.present.account.UpdateInfoPresentImpl;
+import com.mobile.factory.present.user.UpdateInfoPresent;
+import com.mobile.factory.present.user.UpdateInfoPresentImpl;
 import com.mobile.myApp.R;
 import com.mobile.myApp.activities.MainActivity;
 import com.mobile.myApp.tools.ImgSelector;
@@ -40,7 +35,6 @@ import net.qiujuer.genius.ui.widget.Button;
 import net.qiujuer.genius.ui.widget.ImageView;
 import net.qiujuer.genius.ui.widget.Loading;
 
-import java.io.File;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -56,7 +50,7 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
     private UpdateInfoPresent.Presenter updateInfoPresent;
     private String localPortraitPath;  // 本地选择的头像地址
     private boolean isMale = true;  // 性别，默认男
-    private String downloadURL; // 服务器上的下载地址
+    private String portraitKey; // 服务器上的key
 
     // 控件绑定
     @SuppressLint("NonConstantResourceId")
@@ -158,12 +152,13 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
         String desc = description.getText().toString();
         // 先把图片上传了
         try {
-            downloadURL = UploadHelper.uploadImage(localPortraitPath, getContext());
+            portraitKey = UploadHelper.uploadImage(localPortraitPath, getContext());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 发起请求更新数据库
-        updateInfoPresent.requestUpdate(localPortraitPath, desc, isMale);
+        Log.e("aaa", localPortraitPath);
+        // 发起请求更新数据库 TODO: 把存储路径改为服务器上的key，不然会丢
+        updateInfoPresent.requestUpdate(portraitKey, desc, isMale);
     }
 
     @Override

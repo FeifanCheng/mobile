@@ -1,11 +1,8 @@
-package com.mobile.factory.present.account;
+package com.mobile.factory.present.user;
 
 import com.mobile.factory.R;
-import com.mobile.factory.helper.account.AccountHelper;
-import com.mobile.factory.helper.network.UploadHelper;
-import com.mobile.factory.present.user.UserHelper;
+import com.mobile.factory.helper.user.UserHelper;
 import com.mobile.util.data.DataSource;
-import com.mobile.util.model.api.account.RegisterModel;
 import com.mobile.util.model.api.user.UserUpdateInfoModel;
 import com.mobile.util.model.db.entity.User;
 import com.mobile.util.model.db.identity.UserIdentity;

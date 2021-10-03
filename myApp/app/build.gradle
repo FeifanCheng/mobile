@@ -80,5 +80,6 @@ dependencies {
     // use kapt for kotlin apt
     implementation "com.github.raizlabs.dbflow:dbflow-core:${rootProject.ext.dbflowVersion}"
     implementation "com.github.raizlabs.dbflow:dbflow:${rootProject.ext.dbflowVersion}"
+    implementation "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
 
 }

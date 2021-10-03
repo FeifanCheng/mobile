@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.FileUtils;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,15 +18,19 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alibaba.sdk.android.oss.ClientException;
+import com.alibaba.sdk.android.oss.ServiceException;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mobile.factory.helper.network.UploadHelper;
 import com.mobile.myApp.R;
 import com.mobile.myApp.fragments.main_page.ContactsFragment;
 import com.mobile.myApp.fragments.main_page.GroupsFragment;
 import com.mobile.myApp.fragments.main_page.HomeFragment;
+import com.mobile.util.Config;
 import com.mobile.util.StaticData.AccountData;
 import com.mobile.util.app.Activity;
 import com.mobile.util.model.db.entity.User;
@@ -109,10 +116,20 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
         // 设置底部导航栏回调
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        // 设置头像，从数据库拿
+        // 设置头像，从服务器拿
         User user = AccountData.getUser();
         if (user != null) {
-            File file = new File(user.getPortrait());
+            Log.e("user_file: ", user.getPortrait());
+            File file = new File(Config.PORTRAIT_PATH);
+            if(!file.exists()){
+                try {
+                    UploadHelper.downloadFile(user.getPortrait(),
+                            MainActivity.this, Config.PORTRAIT_PATH);
+                } catch (ClientException | ServiceException e) {
+                    e.printStackTrace();
+                }
+                file = new File(Config.PORTRAIT_PATH);
+            }
             Uri uri = Uri.fromFile(file);
             portraitView.setImageURI(uri);
         }
@@ -120,6 +137,8 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     @Override
     protected int getContentLayoutId() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         return R.layout.main_activity;
     }
 

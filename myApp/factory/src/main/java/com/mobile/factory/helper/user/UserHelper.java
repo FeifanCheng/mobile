@@ -1,4 +1,4 @@
-package com.mobile.factory.present.user;
+package com.mobile.factory.helper.user;
 
 import com.mobile.factory.Factory;
 import com.mobile.factory.R;
@@ -7,7 +7,6 @@ import com.mobile.factory.helper.network.NetworkHelper;
 import com.mobile.util.StaticData.AccountData;
 import com.mobile.util.data.DataSource;
 import com.mobile.util.model.api.ResponseModel;
-import com.mobile.util.model.api.account.AccountResponseModel;
 import com.mobile.util.model.api.user.UserUpdateInfoModel;
 import com.mobile.util.model.db.entity.User;
 import com.mobile.util.model.db.identity.UserIdentity;

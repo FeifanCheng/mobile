@@ -36,7 +36,7 @@ public class AccountHelper {
      * 封装登录请求
      *
      * @param loginModel 一个请求model
-     * @param callback      处理请求结果的回调
+     * @param callback   处理请求结果的回调
      */
     public static void login(LoginModel loginModel, DataSource.Callback<User> callback) {
         CallRemote callRemote = NetworkHelper.getRetrofit().create(CallRemote.class);
@@ -46,11 +46,12 @@ public class AccountHelper {
 
     /**
      * 封装的请求方法
+     *
      * @param responseModelCall
      * @param callback
      */
     public static void request(Call<ResponseModel<AccountResponseModel>> responseModelCall,
-                               DataSource.Callback<User> callback){
+                               DataSource.Callback<User> callback) {
         // 发起请求
         responseModelCall.enqueue(new Callback<ResponseModel<AccountResponseModel>>() {
             @Override

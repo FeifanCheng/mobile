@@ -7,6 +7,7 @@ import com.myApp.net.push.utils.Hiber;
 import com.myApp.net.push.utils.TextUtil;
 import com.mysql.cj.util.StringUtils;
 
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -64,6 +65,19 @@ public class UserMapper {
         return Hiber.query(session -> (User) session
                 .createQuery("from User where token=:token")
                 .setParameter("token", token)
+                .uniqueResult());
+    }
+
+    /**
+     * 通过ID查询用户
+     *
+     * @param id
+     * @return
+     */
+    public static User findUserByID(String id) {
+        return Hiber.query(session -> (User) session
+                .createQuery("from User where id=:id")
+                .setParameter("id", id)
                 .uniqueResult());
     }
 
@@ -195,8 +209,9 @@ public class UserMapper {
 
     /**
      * 查询所有联系人
+     *
      * @param user
-     * @return 返回一个关注人的集合
+     * @return 返回一个联系人的集合
      */
     public static List<User> findContacts(User user) {
         return Hiber.query(session -> {
@@ -204,7 +219,7 @@ public class UserMapper {
             session.load(user, user.getId());
 
             Set<UserFollow> user_followings = user.getFollowing();
-            
+
             List<User> followings = new ArrayList<>();
             for (UserFollow user_following : user_followings) {
                 followings.add(user_following.getTarget());
@@ -213,5 +228,81 @@ public class UserMapper {
         });
     }
 
+    /**
+     * 关注一个人
+     *
+     * @param my     发起者
+     * @param follow 被关注人
+     * @param note   别名
+     * @return
+     */
+    public static User followContact(User my, User follow, String note) {
+        UserFollow userFollow = isFollow(my, follow);
+        if (userFollow != null) {
+            return userFollow.getTarget();
+        }
 
+        // 关注
+        return Hiber.query(session -> {
+            session.load(my, my.getId());
+            session.load(follow, follow.getId());
+
+            // 彼此都要关注
+            UserFollow follow1 = new UserFollow();
+            follow1.setOrigin(my);
+            follow1.setTarget(follow);
+            follow1.setAlias(note);
+            UserFollow follow2 = new UserFollow();
+            follow2.setOrigin(follow);
+            follow2.setTarget(my);
+
+            session.save(follow1);
+            session.save(follow2);
+
+            return follow;
+        });
+    }
+
+    /**
+     * 判断是否已经关注
+     *
+     * @param my
+     * @param follow
+     * @return
+     */
+    public static UserFollow isFollow(User my, User follow) {
+        return (UserFollow) Hiber.query(session -> {
+            return session.createQuery("from UserFollow where originId = :originId and targetId = :targetId")
+                    .setParameter("originId", my.getId())
+                    .setParameter("targetId", follow.getId())
+                    .uniqueResult();
+        });
+    }
+
+    /**
+     * 通过名字搜索用户列表
+     * @param name
+     * @return
+     */
+    public static List<User> findUsersByName(String name) {
+        if (StringUtils.isNullOrEmpty(name)) {
+            return Hiber.query(session -> {
+                @SuppressWarnings("unchecked")
+                List<User> userList = (List<User>) session.createQuery("from User order by name desc")
+                        .setMaxResults(10)
+                        .list();
+                return userList;
+            });
+        }
+
+        return Hiber.query(session -> {
+            @SuppressWarnings("unchecked")
+            List<User> userList = (List<User>) session.createQuery("from User where name like :name")
+                    .setMaxResults(10)
+                    .setParameter("name", name + "%")
+                    .list();
+            return userList;
+        });
+    }
 }
+

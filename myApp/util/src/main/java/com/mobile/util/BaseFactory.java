@@ -1,27 +1,25 @@
-package com.mobile.factory;
+package com.mobile.util;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mobile.util.StaticData.AccountData;
 import com.mobile.util.app.Application;
 import com.mobile.util.model.api.ResponseModel;
 import com.mobile.util.model.db.DBExclusionStrategy;
-import com.raizlabs.android.dbflow.config.FlowConfig;
-import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class Factory {
+public class BaseFactory {
     // 单例模式
-    private static final Factory factory = new Factory();
+    private static final BaseFactory factory = new BaseFactory();
     // 全局的线程池
     private final Executor executor;
     // 全局的Gson
     private final Gson gson;
 
 
-    private Factory() {
+    private BaseFactory() {
         executor = Executors.newFixedThreadPool(4);
         gson = new GsonBuilder()
                 // 设置时间格式
@@ -32,7 +30,7 @@ public class Factory {
     }
 
 
-    public static Factory getFactory() {
+    public static BaseFactory getFactory() {
         return factory;
     }
 

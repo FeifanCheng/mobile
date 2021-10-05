@@ -1,6 +1,6 @@
 package com.mobile.factory.helper.account;
 
-import com.mobile.factory.Factory;
+import com.mobile.util.BaseFactory;
 import com.mobile.factory.R;
 import com.mobile.util.StaticData.AccountData;
 import com.mobile.factory.helper.network.CallRemote;
@@ -71,7 +71,7 @@ public class AccountHelper {
                     callback.onSuccess(user);
                 } else {
                     // 如果失败了，处理失败的提示
-                    int error = Factory.transferResponseErrorCode(responseModel);
+                    int error = BaseFactory.transferResponseErrorCode(responseModel);
                     callback.onFail(error);
                 }
             }

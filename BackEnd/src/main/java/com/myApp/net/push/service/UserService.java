@@ -7,12 +7,11 @@ import com.myApp.net.push.model.user.UpdateInfoModel;
 import com.myApp.net.push.response.Response;
 import com.mysql.cj.util.StringUtils;
 
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
+import java.util.List;
 
 // http://localhost:8080/api/user
 @Path("/user")
@@ -36,6 +35,8 @@ public class UserService {
      */
     @Path("/updateInfo")
     @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response<UserIdentity> updateUserInfo(UpdateInfoModel updateInfoModel,
                                                  @HeaderParam("token") String token) {
         if (UpdateInfoModel.isValid(updateInfoModel)) {
@@ -49,5 +50,13 @@ public class UserService {
         }
         return Response.buildParameterError();
     }
+
+//    @Path("/contacts")
+//    @GET
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response<List<UserIdentity>> getContacts(){
+//
+//    }
 
 }

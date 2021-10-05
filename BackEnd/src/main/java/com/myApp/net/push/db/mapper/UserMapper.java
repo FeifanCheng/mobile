@@ -1,12 +1,15 @@
 package com.myApp.net.push.db.mapper;
 
 import com.myApp.net.push.db.entity.User;
+import com.myApp.net.push.db.entity.UserFollow;
 import com.myApp.net.push.model.user.UpdateInfoModel;
 import com.myApp.net.push.utils.Hiber;
 import com.myApp.net.push.utils.TextUtil;
 import com.mysql.cj.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -187,6 +190,26 @@ public class UserMapper {
         return Hiber.query(session -> {
             session.saveOrUpdate(user);
             return user;
+        });
+    }
+
+    /**
+     * 查询所有联系人
+     * @param user
+     * @return 返回一个关注人的集合
+     */
+    public static List<User> findContacts(User user) {
+        return Hiber.query(session -> {
+            // 重新加载一次
+            session.load(user, user.getId());
+
+            Set<UserFollow> user_followings = user.getFollowing();
+            
+            List<User> followings = new ArrayList<>();
+            for (UserFollow user_following : user_followings) {
+                followings.add(user_following.getTarget());
+            }
+            return followings;
         });
     }
 

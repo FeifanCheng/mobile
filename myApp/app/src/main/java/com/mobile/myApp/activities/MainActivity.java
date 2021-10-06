@@ -116,23 +116,34 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
         // 设置底部导航栏回调
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        // 设置头像，从服务器拿
+        // 设置头像
         User user = AccountData.getUser();
-        if (user != null) {
-            Log.e("user_file: ", user.getPortrait());
-            File file = new File(Config.PORTRAIT_PATH);
-            if(!file.exists()){
-                try {
-                    UploadHelper.downloadFile(user.getPortrait(),
-                            MainActivity.this, Config.PORTRAIT_PATH);
-                } catch (ClientException | ServiceException e) {
-                    e.printStackTrace();
-                }
-                file = new File(Config.PORTRAIT_PATH);
-            }
+        File file = new File(user.getPortrait());
+        if (file.exists()) {
             Uri uri = Uri.fromFile(file);
             portraitView.setImageURI(uri);
         }
+
+
+//        // TODO:设置头像，从服务器拿，有问题。。。
+//        User user = AccountData.getUser();
+//        if (user != null) {
+//            Log.e("user_file: ", user.getPortrait());
+//            String portrait_path = Config.PORTRAIT_PATH + user.getPortrait();
+//            File file = new File(portrait_path);
+//            Log.e("file" , portrait_path);
+//            if (!file.exists()) {
+//                try {
+//                    UploadHelper.downloadFile(user.getPortrait(),
+//                            MainActivity.this, portrait_path);
+//                } catch (ClientException | ServiceException e) {
+//                    e.printStackTrace();
+//                }
+//                file = new File(portrait_path);
+//            }
+//            Uri uri = Uri.fromFile(file);
+//            portraitView.setImageURI(uri);
+//        }
     }
 
     @Override

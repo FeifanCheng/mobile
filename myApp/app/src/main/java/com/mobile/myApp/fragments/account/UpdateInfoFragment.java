@@ -157,8 +157,8 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
             e.printStackTrace();
         }
         Log.e("aaa", localPortraitPath);
-        // 发起请求更新数据库 TODO: 把存储路径改为服务器上的key，不然会丢
-        updateInfoPresent.requestUpdate(portraitKey, desc, isMale);
+        // 发起请求更新数据库
+        updateInfoPresent.requestUpdate(localPortraitPath, desc, isMale);
     }
 
     @Override

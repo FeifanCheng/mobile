@@ -214,23 +214,27 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
             //回调成功
             if (requestCode == CAMERA_REQUEST_CODE) {
                 Log.e(ImgSelector.TAG, "相机回调");
-                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    //照片裁剪
-                    imgSelector.openCrop(imgSelector.getImageUri());
-                } else {
-                    Toast.makeText(getContext(), "No SDCard", Toast.LENGTH_SHORT).show();
-                }
+                String path = FileUtils.uriToFile(imgSelector.getImageUri(), getContext()).getAbsolutePath();
+                // 设置头像和本地地址
+                portraitView.setImageURI(imgSelector.getImageUri());
+                localPortraitPath = path;
+                Log.e(ImgSelector.TAG, localPortraitPath);
+
+//                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+//                    //照片裁剪
+//                    imgSelector.openCrop(imgSelector.getImageUri());
+//                } else {
+//                    Toast.makeText(getContext(), "No SDCard", Toast.LENGTH_SHORT).show();
+//                }
             } else if (requestCode == ALBUM_REQUEST_CODE) {
                 Log.e(ImgSelector.TAG, "相册回调");
                 if (data != null && data.getData() != null) {
                     Log.e(ImgSelector.TAG, "相册回调成功");
-                    // TODO: test  模拟器裁剪有问题，应该先裁剪
                     String path = FileUtils.uriToFile(data.getData(), getContext()).getAbsolutePath();
                     // 设置头像和本地地址
                     portraitView.setImageURI(data.getData());
                     localPortraitPath = path;
                     Log.e(ImgSelector.TAG, localPortraitPath);
-//                    imgSelector.openCrop(data.getData()); // 剪裁
                 }
             } else {
                 Log.e(ImgSelector.TAG, "图片剪裁回调");

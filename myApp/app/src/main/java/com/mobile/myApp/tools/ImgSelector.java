@@ -163,7 +163,8 @@ public class ImgSelector {
             Uri uri = null;
             if (isAndroidQ) {
                 //适配Android10
-                uri = createImageUri(context);
+//                uri = createImageUri(context);
+                uri = getOutputMediaFileUri(context);
             } else {
                 //Android10以下
                 file = createImageFile(context);
@@ -227,26 +228,6 @@ public class ImgSelector {
     }
 
     /**
-     * Android10创建图片uri，用来保存拍照后的图片
-     *
-     * @return uri
-     */
-    @RequiresApi(api = Build.VERSION_CODES.Q)
-    private Uri createImageUri(@NonNull Context context) {
-        String status = Environment.getExternalStorageState();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, SAVE_AVATAR_NAME);
-        contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/*");
-        contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/0/");
-        //判断是否有SD卡
-        if (status.equals(Environment.MEDIA_MOUNTED)) {
-            return context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-        } else {
-            return context.getContentResolver().insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI, contentValues);
-        }
-    }
-
-    /**
      * Android10以下创建图片file，用来保存拍照后的照片
      *
      * @return file
@@ -266,6 +247,43 @@ public class ImgSelector {
             return null;
         }
         return tempFile;
+    }
+
+    /**
+     * Android10创建图片file，用来保存拍照后的照片
+     * @param context
+     * @return
+     */
+    private Uri getOutputMediaFileUri(Context context) {
+        File mediaFile = null;
+        String cameraPath;
+        try {
+            File mediaStorageDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+            if (!mediaStorageDir.exists()) {
+                if (!mediaStorageDir.mkdirs()) {
+                    return null;
+                }
+            }
+            Log.e("...", mediaStorageDir.getPath());
+            mediaFile = new File(mediaStorageDir.getPath()
+                    + File.separator
+                    + "Pictures/temp.jpg");//注意这里需要和filepaths.xml中配置的一样
+            cameraPath = mediaFile.getAbsolutePath();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {// sdk >= 24  android7.0以上
+            assert mediaFile != null;
+            return FileProvider.getUriForFile(context,
+                    context.getApplicationContext().getPackageName() + ".fileprovider",//与清单文件中android:authorities的值保持一致
+                    mediaFile);
+
+        } else {
+            return Uri.fromFile(mediaFile);//或者 Uri.isPaise("file://"+file.toString()
+
+        }
     }
 
 }

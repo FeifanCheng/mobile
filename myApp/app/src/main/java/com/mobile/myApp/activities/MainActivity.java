@@ -183,12 +183,13 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
     }
 
     /**
-     * 点击头像监听事件
+     * 点击头像监听事件 TODO: 设成登录了，不然每次都要卸载太麻烦
      */
     @SuppressLint("NonConstantResourceId")
     @OnClick(R.id.main_portrait)
     void onClickPortrait() {
-        UserActivity.show(this);
+        AccountActivity.show(this);
+        this.finish();
     }
 
     /**

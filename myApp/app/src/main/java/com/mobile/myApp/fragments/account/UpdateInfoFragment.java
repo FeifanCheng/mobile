@@ -227,7 +227,6 @@ public class UpdateInfoFragment extends Fragment implements UpdateInfoPresent.Vi
 //                    Toast.makeText(getContext(), "No SDCard", Toast.LENGTH_SHORT).show();
 //                }
             } else if (requestCode == ALBUM_REQUEST_CODE) {
-                Log.e(ImgSelector.TAG, "相册回调");
                 if (data != null && data.getData() != null) {
                     Log.e(ImgSelector.TAG, "相册回调成功");
                     String path = FileUtils.uriToFile(data.getData(), getContext()).getAbsolutePath();

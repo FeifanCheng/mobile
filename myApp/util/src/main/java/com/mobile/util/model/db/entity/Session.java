@@ -204,7 +204,7 @@ public class Session extends BaseModel implements DiffUiDataCallback.UiDataDiffe
 
             Identify identify = (Identify) o;
             return type == identify.type
-                    && (id != null ? id.equals(identify.id) : identify.id == null);
+                    && (Objects.equals(id, identify.id));
         }
 
         @Override

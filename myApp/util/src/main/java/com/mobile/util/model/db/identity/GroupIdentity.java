@@ -9,8 +9,6 @@ import java.util.Date;
 /**
  * 群卡片信息
  *
- * @author qiujuer Email:qiujuer@live.cn
- * @version 1.0.0
  */
 public class GroupIdentity {
     private String id;

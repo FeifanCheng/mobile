@@ -14,8 +14,6 @@ import java.util.Objects;
 /**
  * 群成员Model表
  *
- * @author qiujuer Email:qiujuer@live.cn
- * @version 1.0.0
  */
 @Table(database = Database.class)
 public class GroupMember extends BaseModel {

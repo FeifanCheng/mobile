@@ -1,7 +1,5 @@
 package com.mobile.util.data;
 
-import com.mobile.util.model.db.User;
-
 /**
  * 数据源，接收到服务端数据后做回调的
  */

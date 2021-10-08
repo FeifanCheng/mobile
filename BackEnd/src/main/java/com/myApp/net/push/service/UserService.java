@@ -12,13 +12,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
-import java.util.List;
-import java.util.stream.Collectors;
 
 // http://localhost:8080/api/user
 @Path("/user")
 public class UserService {
-
     @Context
     private SecurityContext securityContext;
 
@@ -27,6 +24,7 @@ public class UserService {
      * @return
      */
     private User getUser(){
+        assert securityContext != null;
         return (User) securityContext.getUserPrincipal();
     }
 

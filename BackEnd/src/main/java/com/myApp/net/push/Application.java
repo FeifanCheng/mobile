@@ -1,10 +1,8 @@
 package com.myApp.net.push;
 
-import com.google.gson.Gson;
 import com.myApp.net.push.provider.Authentication;
 import com.myApp.net.push.provider.GsonProvider;
 import com.myApp.net.push.service.AccountService;
-import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import java.util.logging.Logger;

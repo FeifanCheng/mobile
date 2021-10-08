@@ -1,22 +1,21 @@
 package com.mobile.util.model.api.account;
 
-import com.google.gson.annotations.Expose;
-import com.mobile.util.model.db.User;
+import com.mobile.util.model.db.entity.User;
 
 /**
- * 接口返回账户信息的映射
+ * 接口返回账户信息的映射 !! 名字一定要一致
  */
 public class AccountResponseModel {
-    private User user;
+    private User userIdentity;
     private String token;
     private boolean isBindService; // 是否绑定手机了
 
     public User getUser() {
-        return user;
+        return userIdentity;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.userIdentity = user;
     }
 
     public String getToken() {
@@ -38,7 +37,7 @@ public class AccountResponseModel {
     @Override
     public String toString() {
         return "AccountResponseModel{" +
-                "user=" + user +
+                "user=" + userIdentity +
                 ", token='" + token + '\'' +
                 ", isBindService=" + isBindService +
                 '}';

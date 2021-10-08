@@ -302,26 +302,5 @@ public class UserMapper {
             return user;
         });
     }
-
-    /**
-     * 查询所有联系人
-     * @param user
-     * @return 返回一个关注人的集合
-     */
-    public static List<User> findContacts(User user) {
-        return Hiber.query(session -> {
-            // 重新加载一次
-            session.load(user, user.getId());
-
-            Set<UserFollow> user_followings = user.getFollowing();
-            
-            List<User> followings = new ArrayList<>();
-            for (UserFollow user_following : user_followings) {
-                followings.add(user_following.getTarget());
-            }
-            return followings;
-        });
-    }
-
-
 }
+

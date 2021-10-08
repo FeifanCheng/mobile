@@ -6,6 +6,7 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
         maven { url "https://www.jitpack.io" }
         maven { url 'https://maven.google.com' }
+        maven { url 'https://mvn.getui.com/nexus/content/repositories/releases/'}
     }
 }
 rootProject.name = "myApp"

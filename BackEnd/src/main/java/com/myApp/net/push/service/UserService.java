@@ -11,12 +11,13 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // http://localhost:8080/api/user
 @Path("/user")
 public class UserService {
-
     @Context
     private SecurityContext securityContext;
 
@@ -25,6 +26,7 @@ public class UserService {
      * @return
      */
     private User getUser(){
+        assert securityContext != null;
         return (User) securityContext.getUserPrincipal();
     }
 
@@ -50,13 +52,5 @@ public class UserService {
         }
         return Response.buildParameterError();
     }
-
-//    @Path("/contacts")
-//    @GET
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response<List<UserIdentity>> getContacts(){
-//
-//    }
 
 }

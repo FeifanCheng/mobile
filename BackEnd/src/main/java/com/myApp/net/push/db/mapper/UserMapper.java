@@ -7,6 +7,7 @@ import com.myApp.net.push.utils.Hiber;
 import com.myApp.net.push.utils.TextUtil;
 import com.mysql.cj.util.StringUtils;
 
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -192,26 +193,5 @@ public class UserMapper {
             return user;
         });
     }
-
-    /**
-     * 查询所有联系人
-     * @param user
-     * @return 返回一个关注人的集合
-     */
-    public static List<User> findContacts(User user) {
-        return Hiber.query(session -> {
-            // 重新加载一次
-            session.load(user, user.getId());
-
-            Set<UserFollow> user_followings = user.getFollowing();
-            
-            List<User> followings = new ArrayList<>();
-            for (UserFollow user_following : user_followings) {
-                followings.add(user_following.getTarget());
-            }
-            return followings;
-        });
-    }
-
-
 }
+

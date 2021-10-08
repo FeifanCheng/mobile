@@ -116,4 +116,20 @@ public class AccountData {
         }
         return false;
     }
+
+    public static String getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(String userId) {
+        AccountData.userId = userId;
+    }
+
+    public static String getUserAccount() {
+        return userAccount;
+    }
+
+    public static void setUserAccount(String userAccount) {
+        AccountData.userAccount = userAccount;
+    }
 }
